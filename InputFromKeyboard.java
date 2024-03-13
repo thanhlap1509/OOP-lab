@@ -9,5 +9,6 @@ public class InputFromKeyboard {
         System.out.println("How tall are you (m)?");
         double height = scanner.nextDouble();
         System.out.println("Mrs/Ms. " + name + ", " + age + " years old. " + "Your height is " + height + ".");
+        scanner.close();
     }
 }
