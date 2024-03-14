@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class SumOfMatrices {
     public static void main(String[] args){
-        System.out.println("Enter size of the first matrix (row column): ");
+        System.out.print("Enter size of the first matrix (row column): ");
         int r1, c1;
         Scanner scanner = new Scanner(System.in);
         r1 = scanner.nextInt();
@@ -15,7 +15,7 @@ public class SumOfMatrices {
             }
             scanner.nextLine();
         }
-        System.out.println("Enter size of the second matrix (row column): ");
+        System.out.print("Enter size of the second matrix (row column): ");
         int r2, c2;
         r2 = scanner.nextInt();
         c2 = scanner.nextInt();

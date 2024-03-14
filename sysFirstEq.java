@@ -20,6 +20,6 @@ public class sysFirstEq {
         else if(D==0&&Dx!=0&&Dy!=0)
             JOptionPane.showMessageDialog(null, "No Solution");
         else
-            JOptionPane.showMessageDialog(null, "Solution:\nx ="+Dx/D+"y ="+Dy/D);
+            JOptionPane.showMessageDialog(null, "Solution:\nx ="+Dx/D+" y ="+Dy/D);
     }
 }

@@ -1,11 +1,11 @@
 import java.util.Scanner;
 public class Array {
     public static void main(String[] args){
-        System.out.println(" Enter n: ");
+        System.out.print("Enter n: ");
         int n;
         Scanner scanner = new Scanner(System.in);
         n = scanner.nextInt();
-        scanner.nextLine();
+        System.out.print("Enter the array: ");
         int[] a = new int[n];
         for (int i = 0; i < n; i++){
             a[i] = scanner.nextInt();
@@ -19,8 +19,14 @@ public class Array {
                 }
             }
         }
+        int sum = 0;
+        System.out.print("The array after sorting is: ");
         for (int i = 0; i < n; i++){
-            System.out.print(a[i] + ' ');
+            sum += a[i];
+            System.out.print(a[i] + " ");
         }
+        System.out.println();
+        System.out.println("The sum of the array is : " + sum);
+        System.out.println("The average value of the array is: " + (double)sum / n);
     }
 }

@@ -1,5 +1,4 @@
 import javax.swing.JOptionPane;
-
 public class firstEq {
     private double a;
     private double b;
@@ -17,6 +16,6 @@ public class firstEq {
                 JOptionPane.showMessageDialog(null, "No solution");
         }
         else
-            JOptionPane.showMessageDialog(null, "No solution");
+             JOptionPane.showMessageDialog(null, "the value of x is : " + String.format("%.4g%n", -b / a));
     }
 }
