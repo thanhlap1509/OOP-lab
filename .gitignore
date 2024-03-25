@@ -1,10 +1,4 @@
-# Default ignored files
-/shelf/
-/.idea/workspace.xml
-misc.xml
-modules.xml
-OOP-lab.iml
-vcs.xml
-workspace.xml
-out
 .idea
+OOP-lab
+out
+production

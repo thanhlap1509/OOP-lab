@@ -1,3 +1,5 @@
+package Lab01;
+
 import javax.swing.JOptionPane;
 public class firstEq {
     private double a;

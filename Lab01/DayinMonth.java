@@ -1,3 +1,5 @@
+package Lab01;
+
 import java.util.Scanner;
 public class DayinMonth {
     public static int ValidateMonth(String month){
