@@ -31,7 +31,6 @@ public class DigitalVideoDisc {
         this.length = length;
         this.cost = cost;
     }
-
     public String getTitle(){
         return this.title;
     }

@@ -2,7 +2,7 @@ package Lab02;
 
 public class Cart {
     private int qtyOrderded;
-    public static final int MAX_NUMBERS_ORDERED = 20;
+    private static final int MAX_NUMBERS_ORDERED = 20;
     private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
     public void addDigitalVideoDisc(DigitalVideoDisc disc){
         if (this.qtyOrderded == MAX_NUMBERS_ORDERED){
