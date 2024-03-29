@@ -1,20 +1,20 @@
 package Lab02;
 
 public class Cart {
-    private int qtyOrderded;
-    private static final int MAX_NUMBERS_ORDERED = 20;
+    private int qtyOrdered = 0;
+    public static final int MAX_NUMBERS_ORDERED = 20;
     private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
     public void addDigitalVideoDisc(DigitalVideoDisc disc){
-        if (this.qtyOrderded == MAX_NUMBERS_ORDERED){
+        if (this.qtyOrdered == MAX_NUMBERS_ORDERED){
             System.out.println("The cart is full and can not take in anymore order");
             return;
         }
-        itemsOrdered[qtyOrderded] = disc;
-        qtyOrderded++;
+        itemsOrdered[qtyOrdered] = disc;
+        qtyOrdered++;
         System.out.println("The disc has been added");
     }
     public void removeDigitalVideoDisc(DigitalVideoDisc disc){
-        if (qtyOrderded == 0) {
+        if (this.qtyOrdered == 0) {
             System.out.println("The list is empty and can not remove anymore item");
             return;
         }
@@ -26,7 +26,7 @@ public class Cart {
                     itemsOrdered[j] = itemsOrdered[j + 1];
                 }
                 itemsOrdered[MAX_NUMBERS_ORDERED - 1] = null;
-                qtyOrderded--;
+                qtyOrdered--;
                 break;
             }
         }
