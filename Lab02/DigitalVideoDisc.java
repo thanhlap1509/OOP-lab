@@ -54,4 +54,10 @@ public class DigitalVideoDisc {
     public void toString(int i){
         System.out.println((i + 1)+ ". DVD - "+this.title + " - "+ category + " - "+ this.director + " - "+this.length + ": " + this.cost + " $");
     }
+    public void print(){
+        System.out.println("- DVD - "+this.title + " - "+ category + " - "+ this.director + " - "+this.length + ": " + this.cost + " $");
+    }
+    public boolean isMatch(String InputTitle){
+        return getTitle().equals(InputTitle);
+    }
 }

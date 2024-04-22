@@ -1,5 +1,7 @@
 package Lab02;
 
+import java.util.Scanner;
+
 public class Cart {
     private int qtyOrdered = 0;
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -56,6 +58,25 @@ public class Cart {
         }
         System.out.println("Total cost: " + this.totalCost());
         System.out.println("***************************************************");
-
+    }
+    public void searchByTitle(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the title that you want to search for: ");
+        String title = scanner.nextLine();
+        int founded = 0;
+        for (int i = 0; i < MAX_NUMBERS_ORDERED; i++){
+            if (itemsOrdered[i] != null){
+                if (itemsOrdered[i].isMatch(title)){
+                    if (founded == 0){
+                        founded = 1;
+                        System.out.println("We have found the resulting DVD with the title: " + '"' + title + '"');
+                    }
+                    itemsOrdered[i].print();
+                }
+            }
+        }
+        if (founded == 0){
+            System.out.println("There is no DVD with the title: " + '"' + title + '"');
+        }
     }
 }
