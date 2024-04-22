@@ -52,6 +52,6 @@ public class DigitalVideoDisc {
     }
 
     public void toString(int i){
-        System.out.println((i + 1)+ ". "+this.title + " - "+ category + " - "+ this.director + " - "+this.length + ": " + this.cost + " $");
+        System.out.println((i + 1)+ ". DVD - "+this.title + " - "+ category + " - "+ this.director + " - "+this.length + ": " + this.cost + " $");
     }
 }
