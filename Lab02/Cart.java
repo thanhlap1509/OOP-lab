@@ -45,4 +45,17 @@ public class Cart {
         }
         return total;
     }
+    public void printDigitalVideoDist(){
+        int len = itemsOrdered.length;
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items");
+        for (int i = 0; i < len;i++){
+            if (itemsOrdered[i] != null){
+                itemsOrdered[i].toString(i);
+            }
+        }
+        System.out.println("Total cost: " + this.totalCost());
+        System.out.println("***************************************************");
+
+    }
 }

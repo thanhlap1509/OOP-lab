@@ -51,4 +51,7 @@ public class DigitalVideoDisc {
         return cost;
     }
 
+    public void toString(int i){
+        System.out.println((i + 1)+ ". "+this.title + " - "+ category + " - "+ this.director + " - "+this.length + ": " + this.cost + " $");
+    }
 }
