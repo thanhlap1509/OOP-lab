@@ -32,4 +32,10 @@ public abstract class Media {
     public boolean isMatch(String InputTitle){
         return this.getTitle().equals(InputTitle);
     }
+    @Override
+    public boolean equals(Object o){
+        if (!(o instanceof Media)) return false;
+        String objTitle = ((Media)o).getTitle();
+        return (objTitle.equals(this.title));
+    }
 }
