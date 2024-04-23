@@ -2,7 +2,7 @@ package Lab02;
 
 import java.util.ArrayList;
 
-public class CompactDisc extends Disc {
+public class CompactDisc extends Disc implements Playable {
     private int id;
     private String artist;
     private ArrayList<Track> tracks = new ArrayList<>();
@@ -65,5 +65,12 @@ public class CompactDisc extends Disc {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public void play() {
+        for (Track track: tracks){
+            track.play();
+        }
     }
 }
