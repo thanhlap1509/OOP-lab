@@ -51,14 +51,15 @@ public class Cart {
         System.out.print("Enter the title that you want to search for: ");
         String title = scanner.nextLine();
         int founded = 0;
-        for (Media media : itemsOrdered) {
+        for (int i = 0; i < itemsOrdered.size();i++) {
+            Media media = itemsOrdered.get(i);
             if (media != null) {
                 if (media.isMatch(title)) {
                     if (founded == 0) {
                         founded = 1;
                         System.out.println("We have found the resulting DVD with the title: " + '"' + title + '"');
                         if (media instanceof DigitalVideoDisc){
-                            ((DigitalVideoDisc) media).print();
+                            ((DigitalVideoDisc) media).toString(i);
                         }
                     }
                 }
@@ -68,4 +69,5 @@ public class Cart {
             System.out.println("There is no DVD with the title: " + '"' + title + '"');
         }
     }
+
 }
