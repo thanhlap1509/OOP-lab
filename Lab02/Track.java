@@ -2,9 +2,9 @@ package Lab02;
 
 public class Track {
     private String title;
-    private String length;
+    private int length;
 
-    public Track(String title, String length) {
+    public Track(String title, int length) {
         this.title = title;
         this.length = length;
     }
@@ -13,7 +13,7 @@ public class Track {
         return title;
     }
 
-    public String getLength() {
+    public int getLength() {
         return length;
     }
 }
