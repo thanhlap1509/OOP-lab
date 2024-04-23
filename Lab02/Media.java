@@ -28,4 +28,8 @@ public abstract class Media {
     public float getCost() {
         return cost;
     }
+
+    public boolean isMatch(String InputTitle){
+        return this.getTitle().equals(InputTitle);
+    }
 }
