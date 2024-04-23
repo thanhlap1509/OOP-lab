@@ -1,42 +1,22 @@
 package Lab02;
 
-public class DigitalVideoDisc {
-    private String title;
-    private String category;
+public class DigitalVideoDisc extends Disc{
     private String director;
     private int length;
-    private float cost;
-
     public DigitalVideoDisc(String title) {
-        this.title = title;
+        super(title);
     }
 
     public DigitalVideoDisc(String title, String category, float cost) {
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        super(title, category, cost);
     }
 
     public DigitalVideoDisc(String title, String category, String director, float cost) {
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.cost = cost;
+        super(title, category, director, cost);
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.length = length;
-        this.cost = cost;
-    }
-    public String getTitle(){
-        return this.title;
-    }
-
-    public String getCategory() {
-        return category;
+        super(title, category, director, length, cost);
     }
 
     public String getDirector() {
@@ -47,15 +27,11 @@ public class DigitalVideoDisc {
         return length;
     }
 
-    public float getCost() {
-        return cost;
-    }
-
     public void toString(int i){
-        System.out.println((i + 1)+ ". DVD - "+this.title + " - "+ category + " - "+ this.director + " - "+this.length + ": " + this.cost + " $");
+        System.out.println((i + 1)+ ". DVD - "+this.getTitle() + " - "+ this.getCategory() + " - "+ this.director + " - "+this.length + ": " + this.getCost() + " $");
     }
     public void print(){
-        System.out.println("- DVD - "+this.title + " - "+ category + " - "+ this.director + " - "+this.length + ": " + this.cost + " $");
+        System.out.println("- DVD - "+this.getTitle() + " - "+ getCategory() + " - "+ this.director + " - "+this.length + ": " + this.getCost() + " $");
     }
     public boolean isMatch(String InputTitle){
         return getTitle().equals(InputTitle);
