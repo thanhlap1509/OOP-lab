@@ -25,7 +25,6 @@ public class Store {
         length++;
         System.out.println("DVD added to store successfully");
     }
-
     public void removeMedia(Media media) {
         for (int i = 0; i < length; i++) {
             if (itemsInStore.get(i).equals(media)) {
