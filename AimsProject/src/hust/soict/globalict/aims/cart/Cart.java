@@ -1,5 +1,7 @@
 package AimsProject.src.hust.soict.globalict.aims.cart;
 
+import AimsProject.src.hust.soict.globalict.aims.Book.Book;
+import AimsProject.src.hust.soict.globalict.aims.CD.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.disc.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
@@ -37,13 +39,19 @@ public class Cart {
         }
         return total;
     }
-    public void printDigitalVideoDist(){
+    public void printMedia(){
         int len = itemsOrdered.size();
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items");
         for (int i = 0; i < len;i++){
-            if (itemsOrdered.get(i) != null && (itemsOrdered.get(i) instanceof DigitalVideoDisc)){
-                ((DigitalVideoDisc) (itemsOrdered.get(i))).toString(i);
+            if (itemsOrdered.get(i) instanceof DigitalVideoDisc){
+                ((DigitalVideoDisc) itemsOrdered.get(i)).toString(i);
+            }
+            else if (itemsOrdered.get(i) instanceof CompactDisc){
+                ((CompactDisc) itemsOrdered.get(i)).toString(i);
+            }
+            else if (itemsOrdered.get(i) instanceof Book){
+                ((Book) itemsOrdered.get(i)).toString(i);
             }
         }
         System.out.println("Total cost: " + this.totalCost());
@@ -54,23 +62,31 @@ public class Cart {
         System.out.print("Enter the title that you want to search for: ");
         String title = scanner.nextLine();
         int founded = 0;
-        for (int i = 0; i < itemsOrdered.size();i++) {
-            Media media = itemsOrdered.get(i);
-            if (media != null) {
-                if (media.isMatch(title)) {
-                    if (founded == 0) {
-                        founded = 1;
-                        System.out.println("We have found the resulting DVD with the title: " + '"' + title + '"');
-                        if (media instanceof DigitalVideoDisc){
-                            ((DigitalVideoDisc) media).toString(i);
-                        }
-                    }
+        for (Media media : itemsOrdered) {
+            if (media.isMatch(title)) {
+                if (founded == 0) {
+                    founded = 1;
+                    System.out.println("Found " + media);
                 }
             }
         }
         if (founded == 0){
-            System.out.println("There is no DVD with the title: " + '"' + title + '"');
+            System.out.println("There is no DVD with the title " + '"' + title + '"');
         }
     }
-
+    public void searchByCategory(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the category that you want to search for: ");
+        String category = scanner.nextLine();
+        int found = 0;
+        for (Media media : itemsOrdered){
+            if ((media.getCategory()).equals(category)){
+                System.out.println("Found " + media);
+                found = 1;
+            }
+        }
+        if (found == 0){
+            System.out.println("There is no DVD with the category '" + category + "'");
+        }
+    }
 }

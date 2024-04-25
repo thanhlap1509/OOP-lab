@@ -1,4 +1,4 @@
-package AimsProject.src.hust.soict.globalict.Book;
+package AimsProject.src.hust.soict.globalict.aims.Book;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
@@ -45,6 +45,14 @@ public class Book extends Media {
 
     public int getId() {
         return id;
+    }
+
+    public void toString(int i){
+        System.out.print((i + 1)+ ". Book - "+ this.id + " - " + this.getTitle() + " - " );
+        for (String author : authors){
+            System.out.print(author + ", ");
+        }
+        System.out.println(" - " + this.getCategory() + ": " + this.getCost() + " $");
     }
 
 }

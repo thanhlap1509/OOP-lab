@@ -1,4 +1,4 @@
-package OtherProjects.Lab03;
+package AimsProject.src.hust.soict.globalict.test.store;
 
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
 import AimsProject.src.hust.soict.globalict.aims.disc.DigitalVideoDisc;

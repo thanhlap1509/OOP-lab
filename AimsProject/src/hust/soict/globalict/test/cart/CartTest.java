@@ -10,7 +10,7 @@ public class CartTest {
         cart.addMedia(dvd1);
         cart.addMedia(dvd2);
         cart.addMedia(dvd3);
-        cart.printDigitalVideoDist();
+        cart.printMedia();
         cart.searchByTitle();
     }
 }

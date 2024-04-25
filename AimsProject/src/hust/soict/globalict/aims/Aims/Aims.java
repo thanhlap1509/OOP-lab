@@ -1,4 +1,4 @@
-package AimsProject.src.hust.soict.globalict.aims;
+package AimsProject.src.hust.soict.globalict.aims.Aims;
 
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
 
