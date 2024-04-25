@@ -2,7 +2,7 @@ package AimsProject.src.hust.soict.globalict.aims.cart;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.CD.CompactDisc;
-import AimsProject.src.hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
 import java.util.ArrayList;

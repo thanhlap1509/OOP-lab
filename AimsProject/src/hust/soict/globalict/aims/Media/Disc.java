@@ -1,4 +1,4 @@
-package AimsProject.src.hust.soict.globalict.aims.disc;
+package AimsProject.src.hust.soict.globalict.aims.Media;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 

@@ -1,6 +1,6 @@
 package AimsProject.src.hust.soict.globalict.aims.CD;
 
-import AimsProject.src.hust.soict.globalict.aims.disc.Disc;
+import AimsProject.src.hust.soict.globalict.aims.Media.Disc;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 
 import java.util.ArrayList;

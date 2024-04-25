@@ -1,7 +1,7 @@
 package AimsProject.src.hust.soict.globalict.test.cart;
 import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
-import AimsProject.src.hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 public class CartTest {
     public static void main(String[] args){
         Cart cart = new Cart();
