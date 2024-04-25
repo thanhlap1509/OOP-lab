@@ -48,7 +48,7 @@ public class Book extends Media {
     }
 
     public void toString(int i){
-        System.out.print((i + 1)+ ". Book - "+ this.id + " - " + this.getTitle() + " - " + this.getCategory() + " - ");
+        System.out.print((i + 1)+ ". Book - " + this.getTitle() + " - " + this.getCategory() + " - ");
         if (authors.size() == 1){
             System.out.print(authors.get(0));
         }

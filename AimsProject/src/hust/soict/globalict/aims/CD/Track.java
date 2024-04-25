@@ -1,4 +1,4 @@
-package AimsProject.src.hust.soict.globalict.aims.Track;
+package AimsProject.src.hust.soict.globalict.aims.CD;
 
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 

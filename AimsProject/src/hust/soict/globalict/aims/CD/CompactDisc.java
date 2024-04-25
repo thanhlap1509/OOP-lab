@@ -2,7 +2,6 @@ package AimsProject.src.hust.soict.globalict.aims.CD;
 
 import AimsProject.src.hust.soict.globalict.aims.disc.Disc;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
-import AimsProject.src.hust.soict.globalict.aims.Track.Track;
 
 import java.util.ArrayList;
 
@@ -78,6 +77,10 @@ public class CompactDisc extends Disc implements Playable {
         }
     }
     public void toString(int i){
-        System.out.println((i + 1)+ ". CD - "+ this.id + " - " + this.getTitle() + " - "  + this.artist + " - " + this.getCategory() + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
+        System.out.println((i + 1)+ ". CD - " + this.getTitle() + this.getCategory() + " - "  + this.artist + " - " + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
+        for (Track track : tracks){
+            System.out.print("\t");
+            track.play();
+        }
     }
 }
