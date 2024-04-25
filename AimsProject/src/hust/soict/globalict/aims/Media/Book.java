@@ -1,4 +1,4 @@
-package AimsProject.src.hust.soict.globalict.aims.Book;
+package AimsProject.src.hust.soict.globalict.aims.Media;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
@@ -17,6 +17,9 @@ public class Book extends Media {
     }
 
     public Book(){
+        setCost(0);
+        setTitle("");
+        setCategory("");
         this.id = 0;
     }
     public void addAuthor(String authorName){

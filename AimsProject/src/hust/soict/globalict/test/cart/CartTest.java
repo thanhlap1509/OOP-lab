@@ -1,6 +1,5 @@
 package AimsProject.src.hust.soict.globalict.test.cart;
-import AimsProject.src.hust.soict.globalict.aims.Book.Book;
-import AimsProject.src.hust.soict.globalict.aims.CD.CompactDisc;
+import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
 import AimsProject.src.hust.soict.globalict.aims.disc.DigitalVideoDisc;
 public class CartTest {
