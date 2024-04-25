@@ -48,11 +48,17 @@ public class Book extends Media {
     }
 
     public void toString(int i){
-        System.out.print((i + 1)+ ". Book - "+ this.id + " - " + this.getTitle() + " - " );
-        for (String author : authors){
-            System.out.print(author + ", ");
+        System.out.print((i + 1)+ ". Book - "+ this.id + " - " + this.getTitle() + " - " + this.getCategory() + " - ");
+        if (authors.size() == 1){
+            System.out.print(authors.get(0));
         }
-        System.out.println(" - " + this.getCategory() + ": " + this.getCost() + " $");
+        else {
+            System.out.print(authors.get(0));
+            for (int j = 1; j < authors.size();j++){
+                System.out.print(", " + authors.get(j));
+            }
+        }
+        System.out.println(": " + this.getCost() + " $");
     }
 
 }

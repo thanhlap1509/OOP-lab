@@ -1,4 +1,6 @@
 package AimsProject.src.hust.soict.globalict.test.cart;
+import AimsProject.src.hust.soict.globalict.aims.Book.Book;
+import AimsProject.src.hust.soict.globalict.aims.CD.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
 import AimsProject.src.hust.soict.globalict.aims.disc.DigitalVideoDisc;
 public class CartTest {
@@ -10,6 +12,9 @@ public class CartTest {
         cart.addMedia(dvd1);
         cart.addMedia(dvd2);
         cart.addMedia(dvd3);
+        Book book1 = new Book(10, "Lord of the Ring", "Fiction", 20.22f);
+        book1.addAuthor("J.R.R Tolkien");
+        cart.addMedia(book1);
         cart.printMedia();
         cart.searchByTitle();
     }
