@@ -16,6 +16,7 @@ public class MediaComparatorByCostTitle implements Comparator<Media> {
             if (o1Title.compareTo(o2Title) <= 0) return 1;
             else return 0;
         }
+
         return 0;
     }
 }
