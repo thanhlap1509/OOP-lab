@@ -29,7 +29,6 @@ public class Track implements Playable {
         if (!(o instanceof Track)) return false;
         String objTitle = ((Track) o).getTitle();
         int objLength = ((Track) o).getLength();
-        if (objTitle.equals(this.title) && objLength == this.length) return true;
-        return false;
+        return objTitle.equals(this.title) && objLength == this.length;
     }
 }
