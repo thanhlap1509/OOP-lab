@@ -208,7 +208,9 @@ public class Aims {
                             System.out.print("Enter track length: ");
                             int length = getInt();
                             Track track = new Track(trackTitle, length);
-                            cd.addTrack(track);
+                            if (cd.addTrack(track) == 0){
+                                i--;
+                            };
                         }
                         //finally, add cd to store
                         store.addMedia(cd);
