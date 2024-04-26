@@ -31,7 +31,15 @@ public class Cart {
         }
         System.out.println("There is no such item in cart");
     }
-
+    public void removeMedia(String title){
+      for (Media media : itemsOrdered){
+          if ((media.getTitle()).equals(title)){
+              System.out.println("Item removed successfully");
+              return;
+          }
+      }
+        System.out.println("There is no such item in cart");
+    }
     public float totalCost(){
         float total = 0;
         for (Media disc : itemsOrdered){
