@@ -1,6 +1,8 @@
 package AimsProject.src.hust.soict.globalict.aims.store;
 import java.util.ArrayList;
 
+import AimsProject.src.hust.soict.globalict.aims.Media.Book;
+import AimsProject.src.hust.soict.globalict.aims.Media.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
@@ -38,6 +40,28 @@ public class Store {
         for (int i = 0; i < length; i++) {
             if (itemsInStore.get(i) instanceof DigitalVideoDisc) {
                 ((DigitalVideoDisc) itemsInStore.get(i)).print();
+            }
+        }
+    }
+    public Media searchByTitle(String title){
+        for (Media media : itemsInStore){
+            if ((media.getTitle()).equals(title)){
+                return media;
+            }
+        }
+        return null;
+    }
+    public void displayMedia(){
+        for (int i = 0; i < itemsInStore.size(); i++){
+            Media media = itemsInStore.get(i);
+            if (media instanceof Book){
+                ((Book) media).toString(i);
+            }
+            else if (media instanceof CompactDisc){
+                ((CompactDisc) media).toString(i);
+            }
+            else {
+                ((DigitalVideoDisc)media).toString(i);
             }
         }
     }
