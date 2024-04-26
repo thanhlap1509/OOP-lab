@@ -91,7 +91,6 @@ public class Aims {
                     Media returnMedia = store.searchByTitle(userOptStr);
                     if (returnMedia == null){
                         System.out.println("There is no media with that title");
-                        break;
                     }
                     else {
                         cart.addMedia(returnMedia);
@@ -130,7 +129,6 @@ public class Aims {
                     Media returnMedia = store.searchByTitle(userOptStr);
                     if (returnMedia == null){
                         System.out.println("There is no media with that title");
-                        break;
                     }
                     else {
                         cart.addMedia(returnMedia);
