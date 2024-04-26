@@ -18,22 +18,23 @@ public class Store {
     public void addMedia(Media media) {
         for (int i = 0; i < length; i++) {
             if (itemsInStore.get(i).equals(media)) {
-                System.out.println("This DVD is already in store");
+                System.out.println("This media is already in store");
                 return;
             }
         }
         itemsInStore.add(media);
         length++;
-        System.out.println("DVD added to store successfully");
+        System.out.println("Media added to store successfully");
     }
     public void removeMedia(Media media) {
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < itemsInStore.size(); i++) {
             if (itemsInStore.get(i).equals(media)) {
                 itemsInStore.remove(i);
-                length--;
-                break;
+                System.out.println("Media removed successfully");
+                return;
             }
         }
+        System.out.println("This media isn't in the store");
     }
 
     public void print() {
