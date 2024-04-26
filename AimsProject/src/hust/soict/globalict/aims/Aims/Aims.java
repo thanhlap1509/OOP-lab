@@ -289,7 +289,9 @@ public class Aims {
                 }
                     return;
             case 3:
-
+                System.out.print("Enter title of the media that you want to remove: ");
+                String title = scanner.nextLine();
+                cart.removeMedia(title);
                 return;
             case 4:
                 return;
