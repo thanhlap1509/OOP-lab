@@ -276,7 +276,7 @@ public class Aims {
                 cartMenu();
                 return;
             case 2:
-                String choice = " ";
+                choice = " ";
                 while (!choice.equals("cost") && !choice.equals("title")){
                     System.out.print("Choose filtering option (cost/title): ");
                     choice = scanner.nextLine();
