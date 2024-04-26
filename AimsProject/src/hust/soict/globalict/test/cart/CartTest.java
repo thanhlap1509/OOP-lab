@@ -15,6 +15,5 @@ public class CartTest {
         book1.addAuthor("J.R.R Tolkien");
         cart.addMedia(book1);
         cart.printMedia();
-        cart.searchByTitle();
     }
 }

@@ -2,7 +2,7 @@ package AimsProject.src.hust.soict.globalict.aims.Media;
 
 import java.util.Comparator;
 
-public abstract class Media {
+public abstract class Media{
     public static final Comparator<Media> COMPARATOR_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARATOR_BY_COST_TITLE = new MediaComparatorByCostTitle();
     private String title;

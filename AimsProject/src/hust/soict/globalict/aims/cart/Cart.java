@@ -7,6 +7,7 @@ import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Cart {
@@ -67,36 +68,33 @@ public class Cart {
         System.out.println("Total cost: " + this.totalCost());
         System.out.println("***************************************************");
     }
-    public void searchByTitle(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the title that you want to search for: ");
-        String title = scanner.nextLine();
-        int founded = 0;
-        for (Media media : itemsOrdered) {
-            if (media.isMatch(title)) {
-                if (founded == 0) {
-                    founded = 1;
-                    System.out.println("Found " + media);
-                }
+    public Media searchByTitle(String title){
+        for (Media media : itemsOrdered){
+            if ((media.getTitle()).equals(title)){
+                return media;
             }
         }
-        if (founded == 0){
-            System.out.println("There is no DVD with the title " + '"' + title + '"');
-        }
+        return null;
     }
     public void searchById(int id){
+        int found = 0;
         for (int i = 0; i < itemsOrdered.size();i++){
             Media media = itemsOrdered.get(i);
             if (media instanceof Book){
                 if (((Book)media).getId() == id){
+                    found = 1;
                     ((Book) media).toString(i);
                 }
             }
             else if (media instanceof CompactDisc){
                 if (((CompactDisc)media).getId() == id){
+                    found = 1;
                     ((CompactDisc)media).toString(i);
                 }
             }
+        }
+        if (found == 0){
+            System.out.println("There is no media with that id");
         }
     }
     public void searchByCategory(){
@@ -119,9 +117,11 @@ public class Cart {
         System.out.println("Cart has been clear");
     }
     public void sortByTitle() {
-        itemsOrdered.sort(Media.COMPARATOR_BY_TITLE_COST);
+        Collections.sort((List<Media>)itemsOrdered, Media.COMPARATOR_BY_TITLE_COST);
+        this.printMedia();
     }
     public void sortByCost(){
-        itemsOrdered.sort(Media.COMPARATOR_BY_COST_TITLE);
+        Collections.sort((List<Media>)itemsOrdered, Media.COMPARATOR_BY_COST_TITLE);
+        this.printMedia();
     }
 }

@@ -15,6 +15,7 @@ public class Aims {
     private static int userOpt;
     private static String userOptStr;
     public static void main(String[] args){
+        initSetup();
         showMenu();
     }
     public static void getUserInput(int l, int g){
@@ -275,7 +276,24 @@ public class Aims {
                     cart.searchById(id);
                 }
                 else {
-                    cart.searchByTitle();
+                    System.out.print("Enter the title that you want to search: ");
+                    String title = scanner.nextLine().strip();
+                    Media returnMedia = cart.searchByTitle(title);
+                    if (returnMedia == null){
+                        System.out.println("There is no media with that title");
+                    }
+                    else {
+                        System.out.println("Media with title " + title + " : ");
+                        if (returnMedia instanceof Book) {
+                            ((Book) returnMedia).toString(0);
+                        }
+                        else if (returnMedia instanceof CompactDisc){
+                            ((CompactDisc) returnMedia).toString(0);
+                        }
+                        else {
+                            ((DigitalVideoDisc) returnMedia).toString(0);
+                        }
+                    }
                 }
                 cartMenu();
                 return;
@@ -300,7 +318,7 @@ public class Aims {
                 cartMenu();
                 return;
             case 4:
-                playMedia();
+                playMediaInCart();
                 cartMenu();
                 return;
             case 5:
@@ -354,4 +372,72 @@ public class Aims {
             System.out.println("this type of media can't be play");
         }
     }
+    public static void playMediaInCart(){
+        System.out.print("Please enter the title of media that you want to play: ");
+        userOptStr = scanner.nextLine().strip();
+        Media returnMedia = cart.searchByTitle(userOptStr);
+        if (returnMedia == null){
+            System.out.println("There is no media with that title");
+        }
+        else if ( returnMedia instanceof DigitalVideoDisc){
+            ((DigitalVideoDisc) returnMedia).play();
+        }
+        else if (returnMedia instanceof CompactDisc){
+            ((CompactDisc) returnMedia).play();
+        }
+        else {
+            System.out.println("this type of media can't be play");
+        }
+    }
+    public static void initSetup() {
+
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star War", "Science Fiction", "George Lucas", 87, 24.95f);
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+        store.addMedia(dvd1);
+        store.addMedia(dvd2);
+        store.addMedia(dvd3);
+
+
+        Book book = new Book("The Valley of Fear", "Detective", 20.00f);
+        book.addAuthor("Arthur Conan Doyle");
+        Book book1 = new Book("A Living Remedy: A Memoir", "Biography", 202.00f);
+        book1.addAuthor("Nicole Chung");
+        Book book2 = new Book("On the Origin of Time: Stephen Hawking's Final Theory", "Science", 120.00f);
+        book2.addAuthor("Thomas Hertog");
+        store.addMedia(book);
+        store.addMedia(book1);
+        store.addMedia(book2);
+
+
+        CompactDisc cd1 = new CompactDisc("30", "Music","Adele", 1500.98f);
+        Track track1CD1 = new Track("All Night Parking (interlude)", 161);
+        Track track2CD1 = new Track("To Be Loved", 403);
+        Track track3CD1 = new Track("Woman Like Me", 300);
+        cd1.addTrack(track1CD1);
+        cd1.addTrack(track2CD1);
+        cd1.addTrack(track3CD1);
+
+        CompactDisc cd2 = new CompactDisc("The Gods We Can Touch", "Music","Aurora", 2000.22f);
+        Track track1CD2 = new Track("Everything Matters", 180+34);
+        Track track2CD2 = new Track("Blood in the Wine", 180+30);
+        Track track3CD2 = new Track("Artemis", 60*2+39);
+        cd2.addTrack(track1CD2);
+        cd2.addTrack(track2CD2);
+        cd2.addTrack(track3CD2);
+
+        CompactDisc cd3 = new CompactDisc("Purpose", "Music","Justin Bieber", 1000.98f);
+        Track track1CD3 = new Track("The Feeling", 4*60+5);
+        Track track2CD3 = new Track("No Sense", 4*60+35);
+        cd3.addTrack(track1CD3);
+        cd3.addTrack(track2CD3);
+
+        store.addMedia(cd1);
+        store.addMedia(cd2);
+        store.addMedia(cd3);
+        for (int i = 0; i < 10; i++){
+            System.out.println();
+        }
+    }
+
 }

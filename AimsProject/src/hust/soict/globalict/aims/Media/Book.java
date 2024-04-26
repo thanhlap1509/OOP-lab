@@ -8,7 +8,11 @@ import java.util.List;
 public class Book extends Media {
     private int id;
     private List<String> authors = new ArrayList<String>();
-
+    public Book(String title, String category, float cost) {
+        setTitle(title);
+        setCategory(category);
+        setCost(cost);
+    }
     public Book(int id, String title, String category, float cost) {
         this.id = id;
         setTitle(title);
