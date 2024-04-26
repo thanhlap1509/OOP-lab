@@ -22,25 +22,27 @@ public class Book extends Media {
         setCategory("");
         this.id = 0;
     }
-    public void addAuthor(String authorName){
+    public int addAuthor(String authorName){
         for (String name : authors){
             if (name.equals(authorName)) {
                 System.out.println("this author is already in the list");
-                return;
+                return 0;
             }
         }
         authors.add(authorName);
         System.out.println("Author added successfully");
+        return 1;
     }
-    public void removeAuthor(String authorName){
+    public int removeAuthor(String authorName){
         for (int i = 0; i < authors.size();i++){
             if (authors.get(i).equals(authorName)){
                 authors.remove(i);
                 System.out.println("Author removed successfully");
-                return;
+                return 1;
             }
         }
         System.out.println("There is no author name "  + authorName + " in the list");
+        return 0;
     }
     public void setId(int id) {
         this.id = id;

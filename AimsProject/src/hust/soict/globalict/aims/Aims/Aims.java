@@ -5,6 +5,7 @@ import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Aims {
@@ -42,19 +43,20 @@ public class Aims {
         System.out.print("Please choose a number: 0-1-2-3: ");
         getUserInput(0, 3);
         switch(userOpt){
-            case 0:
-                System.out.println("Goodbye!");
-                break;
-            case 1:
-                storeMenu();
-                break;
-            case 2:
-                updateStore();
-                break;
-            case 3:
-                break;
+                case 1:
+                    storeMenu();
+                    return;
+                case 2:
+                    updateStore();
+                    return;
+                case 3:
+                    return;
+                case 0:
+                    System.out.println("Goodbye!");
+                    return;
         }
     }
+
     public static void storeMenu() {
         System.out.println();
         store.displayMedia();
@@ -68,7 +70,6 @@ public class Aims {
         System.out.println("--------------------------------");
         System.out.print("Please choose a number: 0-1-2-3-4: ");
         getUserInput(0, 4);
-        while (userOpt != 0){
             switch(userOpt){
                 case 1:
                     System.out.print("Please enter a title: ");
@@ -76,23 +77,24 @@ public class Aims {
                     Media media = store.searchByTitle(userOptStr);
                     if (media == null) {
                         System.out.println("There is no media with that title");
+                        storeMenu();
                     }
                     else {
                         mediaDetailsMenu(media);
                     }
-                    break;
+                    return;
                 case 2:
-                    break;
+                    return;
                 case 3:
-                    break;
+                    return;
                 case 4:
-                    break;
+                    return;
+                case 0:
+                    showMenu();
+                    return;
             }
-            System.out.print("Please choose a number: 0-1-2-3-4: ");
-            getUserInput(0, 4);
         }
-        showMenu();
-    }
+
     public static void mediaDetailsMenu(Media media) {
         System.out.println();
         System.out.println("Found: " + media.getTitle() + " - " + media.getCategory() + " - " + media.getCost());
@@ -102,9 +104,8 @@ public class Aims {
         System.out.println("2. Play");
         System.out.println("0. Back");
         System.out.println("--------------------------------");
-        System.out.println("Please choose a number: 0-1-2");
+        System.out.print("Please choose a number: 0-1-2: ");
         getUserInput(0, 2);
-        while (userOpt != 0){
             switch(userOpt){
                 case 1:
                     System.out.print("Please enter the title of media that you want to add: ");
@@ -112,11 +113,13 @@ public class Aims {
                     Media returnMedia = store.searchByTitle(userOptStr);
                     if (returnMedia == null){
                         System.out.println("There is no media with that title");
+                        break;
                     }
                     else {
                         cart.addMedia(returnMedia);
                     }
-                    break;
+                    mediaDetailsMenu(media);
+                    return;
                 case 2:
                     System.out.print("Please enter the title of media that you want to play: ");
                     userOptStr = scanner.nextLine();
@@ -133,13 +136,14 @@ public class Aims {
                     else {
                         System.out.println("this type of media can't be play");
                     }
-                    break;
+                    mediaDetailsMenu(media);
+                    return;
+                case 0:
+                    storeMenu();
+                    return;
             }
-            System.out.println("Please choose a number: 0-1-2");
-            getUserInput(0, 2);
         }
-        storeMenu();
-    }
+
     public static void updateStore(){
         System.out.println();
         System.out.println("Options: ");
@@ -150,7 +154,6 @@ public class Aims {
         System.out.println("--------------------------------");
         System.out.print("Please choose a number: 0-1-2: ");
         getUserInput(0, 2);
-        while (userOpt != 0){
             switch(userOpt) {
                 case 1:
                     userOptStr = " ";
@@ -176,7 +179,9 @@ public class Aims {
                         for (int i = 0; i < author; i++){
                             System.out.print("Enter author name: ");
                             authorName = scanner.nextLine();
-                            book.addAuthor(authorName);
+                             if (book.addAuthor(authorName) == 0){
+                                 i--;
+                             };
                         }
                         store.addMedia(book);
                     } else if (userOptStr.equals("CD")) {
@@ -218,7 +223,8 @@ public class Aims {
                         DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
                         store.addMedia(dvd);
                     }
-                    break;
+                    updateStore();
+                    return;
                 case 2:
                     System.out.print("Enter title of media that you want to remove: ");
                     title = scanner.nextLine();
@@ -229,19 +235,19 @@ public class Aims {
                     else {
                         store.removeMedia(mediaToDelete);
                     }
-                    break;
+                    updateStore();
+                    return;
+                case 0:
+                    showMenu();
+                    return;
             }
-            System.out.print("Please choose a number: 0-1-2: ");
-            getUserInput(0, 2);
         }
-        showMenu();
-    }
     public static int getInt(){
         int temp = -1;
         while (temp == -1){
             try {
                 temp = scanner.nextInt();
-            } catch(NumberFormatException e){
+            } catch(NumberFormatException | InputMismatchException e){
                 System.out.print("Please enter again: ");
                 temp = -1;
                 scanner.nextLine();
@@ -255,7 +261,7 @@ public class Aims {
         while (temp == -1f){
             try {
                 temp = scanner.nextFloat();
-            } catch(NumberFormatException e){
+            } catch(NumberFormatException | InputMismatchException e){
                 System.out.print("Please enter again: ");
                 temp = -1f;
                 scanner.nextLine();
