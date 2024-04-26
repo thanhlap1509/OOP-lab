@@ -86,11 +86,25 @@ public class Aims {
                     }
                     return;
                 case 2:
+                    System.out.print("Please enter the title of media that you want to add: ");
+                    userOptStr = scanner.nextLine();
+                    Media returnMedia = store.searchByTitle(userOptStr);
+                    if (returnMedia == null){
+                        System.out.println("There is no media with that title");
+                        break;
+                    }
+                    else {
+                        cart.addMedia(returnMedia);
+                    }
+                    storeMenu();
                     return;
                 case 3:
                     playMedia();
+                    storeMenu();
                     return;
                 case 4:
+                    cart.printMedia();
+                    storeMenu();
                     return;
                 case 0:
                     showMenu();
