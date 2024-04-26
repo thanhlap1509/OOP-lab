@@ -50,6 +50,8 @@ public class Aims {
                     updateStore();
                     return;
                 case 3:
+                    cart.printMedia();
+                    cartMenu();
                     return;
                 case 0:
                     System.out.println("Goodbye!");
@@ -242,6 +244,59 @@ public class Aims {
                     return;
             }
         }
+    public static void cartMenu(){
+        System.out.println("Options: ");
+        System.out.println("--------------------------------");
+        System.out.println("1. Filter media in cart");
+        System.out.println("2. Sort media in cart");
+        System.out.println("3. Remove media from cart");
+        System.out.println("4. Play a media");
+        System.out.println("5. Place order");
+        System.out.println("0. Back");
+        System.out.println("--------------------------------");
+        System.out.print("Please choose a number: 0-1-2-3-4-5: ");
+        getUserInput(0, 5);
+        switch(userOpt){
+            case 0:
+                showMenu();
+                return;
+            case 1:
+                String choice = " ";
+                while (!choice.equals("id") && !choice.equals("title")){
+                    System.out.print("Choose filtering option (id/title): ");
+                    choice = scanner.nextLine();
+                }
+                if (choice.equals("id")){
+                    int id = getInt();
+                    cart.searchById(id);
+                }
+                else {
+                    cart.searchByTitle();
+                }
+                cartMenu();
+                return;
+            case 2:
+                String choice = " ";
+                while (!choice.equals("cost") && !choice.equals("title")){
+                    System.out.print("Choose filtering option (cost/title): ");
+                    choice = scanner.nextLine();
+                }
+                if (choice.equals("title")){
+                    cart.sortByTitle();
+                }
+                else{
+                    cart.sortByCost();
+                }
+                    return;
+            case 3:
+
+                return;
+            case 4:
+                return;
+            case 5:
+                return;
+        }
+    }
     public static int getInt(){
         int temp = -1;
         while (temp == -1){

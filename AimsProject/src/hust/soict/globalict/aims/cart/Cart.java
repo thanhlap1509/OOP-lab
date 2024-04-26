@@ -6,6 +6,7 @@ import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Cart {
@@ -74,6 +75,21 @@ public class Cart {
             System.out.println("There is no DVD with the title " + '"' + title + '"');
         }
     }
+    public void searchById(int id){
+        for (int i = 0; i < itemsOrdered.size();i++){
+            Media media = itemsOrdered.get(i);
+            if (media instanceof Book){
+                if (((Book)media).getId() == id){
+                    ((Book) media).toString(i);
+                }
+            }
+            else if (media instanceof CompactDisc){
+                if (((CompactDisc)media).getId() == id){
+                    ((CompactDisc)media).toString(i);
+                }
+            }
+        }
+    }
     public void searchByCategory(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the category that you want to search for: ");
@@ -88,5 +104,12 @@ public class Cart {
         if (found == 0){
             System.out.println("There is no DVD with the category '" + category + "'");
         }
+    }
+
+    public void sortByTitle() {
+        itemsOrdered.sort(Media.COMPARATOR_BY_TITLE_COST);
+    }
+    public void sortByCost(){
+        itemsOrdered.sort(Media.COMPARATOR_BY_COST_TITLE);
     }
 }
