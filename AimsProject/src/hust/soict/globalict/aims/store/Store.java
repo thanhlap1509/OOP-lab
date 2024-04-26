@@ -8,22 +8,19 @@ import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 
 public class Store {
     private ArrayList<Media> itemsInStore;
-    private int length;
 
     public Store() {
-        length = 0;
         itemsInStore = new ArrayList<Media>();
     }
 
     public void addMedia(Media media) {
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < itemsInStore.size(); i++) {
             if (itemsInStore.get(i).equals(media)) {
                 System.out.println("This media is already in store");
                 return;
             }
         }
         itemsInStore.add(media);
-        length++;
         System.out.println("Media added to store successfully");
     }
     public void removeMedia(Media media) {
@@ -38,7 +35,7 @@ public class Store {
     }
 
     public void print() {
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < itemsInStore.size(); i++) {
             if (itemsInStore.get(i) instanceof DigitalVideoDisc) {
                 ((DigitalVideoDisc) itemsInStore.get(i)).print();
             }

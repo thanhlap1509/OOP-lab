@@ -103,7 +103,7 @@ public class Aims {
                     return;
                 case 4:
                     cart.printMedia();
-                    storeMenu();
+                    cartMenu();
                     return;
                 case 0:
                     showMenu();
@@ -171,7 +171,7 @@ public class Aims {
                         title = scanner.nextLine();
                         System.out.print("Enter book category: ");
                         category = scanner.nextLine();
-                        System.out.print("enter book cost: ");
+                        System.out.print("Enter book cost: ");
                         cost = getFloat();
                         Book book = new Book(id, title, category, cost);
                         System.out.print("How many author do you want to add: ");
@@ -192,7 +192,7 @@ public class Aims {
                         title = scanner.nextLine();
                         System.out.print("Enter CD category: ");
                         category = scanner.nextLine();
-                        System.out.print("enter CD cost: ");
+                        System.out.print("Enter CD cost: ");
                         cost = getFloat();
                         System.out.print("Please enter CD artist: ");
                         String artist = scanner.nextLine();
@@ -217,7 +217,7 @@ public class Aims {
                         title = scanner.nextLine();
                         System.out.print("Enter DVD category: ");
                         category = scanner.nextLine();
-                        System.out.print("enter DVD cost: ");
+                        System.out.print("Enter DVD cost: ");
                         cost = getFloat();
                         System.out.print("Please enter DVD director: ");
                         String director = scanner.nextLine();

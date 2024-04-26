@@ -33,7 +33,8 @@ public class Cart {
     }
     public void removeMedia(String title){
       for (Media media : itemsOrdered){
-          if ((media.getTitle()).equals(title)){
+          if (( media.getTitle() ).equals(title)){
+              itemsOrdered.remove(media);
               System.out.println("Item removed successfully");
               return;
           }
