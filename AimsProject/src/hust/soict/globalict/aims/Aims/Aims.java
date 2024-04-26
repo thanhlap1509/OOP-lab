@@ -88,6 +88,7 @@ public class Aims {
                 case 2:
                     return;
                 case 3:
+                    playMedia();
                     return;
                 case 4:
                     return;
@@ -123,21 +124,7 @@ public class Aims {
                     mediaDetailsMenu(media);
                     return;
                 case 2:
-                    System.out.print("Please enter the title of media that you want to play: ");
-                    userOptStr = scanner.nextLine();
-                    returnMedia = store.searchByTitle(userOptStr);
-                    if (returnMedia == null){
-                        System.out.println("There is no media with that title");
-                    }
-                    else if ( returnMedia instanceof DigitalVideoDisc){
-                        ((DigitalVideoDisc) returnMedia).play();
-                    }
-                    else if (media instanceof CompactDisc){
-                        ((CompactDisc) returnMedia).play();
-                    }
-                    else {
-                        System.out.println("this type of media can't be play");
-                    }
+                    playMedia();
                     mediaDetailsMenu(media);
                     return;
                 case 0:
@@ -287,15 +274,21 @@ public class Aims {
                 else{
                     cart.sortByCost();
                 }
-                    return;
+                cartMenu();
+                return;
             case 3:
                 System.out.print("Enter title of the media that you want to remove: ");
                 String title = scanner.nextLine();
                 cart.removeMedia(title);
+                cartMenu();
                 return;
             case 4:
+                playMedia();
+                cartMenu();
                 return;
             case 5:
+                System.out.println("An order has been created");
+                cart.clear();
                 return;
         }
     }
@@ -326,5 +319,22 @@ public class Aims {
         }
         scanner.nextLine();
         return temp;
+    }
+    public static void playMedia(){
+        System.out.print("Please enter the title of media that you want to play: ");
+        userOptStr = scanner.nextLine();
+        Media returnMedia = store.searchByTitle(userOptStr);
+        if (returnMedia == null){
+            System.out.println("There is no media with that title");
+        }
+        else if ( returnMedia instanceof DigitalVideoDisc){
+            ((DigitalVideoDisc) returnMedia).play();
+        }
+        else if (returnMedia instanceof CompactDisc){
+            ((CompactDisc) returnMedia).play();
+        }
+        else {
+            System.out.println("this type of media can't be play");
+        }
     }
 }

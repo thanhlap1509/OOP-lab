@@ -113,7 +113,10 @@ public class Cart {
             System.out.println("There is no DVD with the category '" + category + "'");
         }
     }
-
+    public void clear(){
+        itemsOrdered.clear();
+        System.out.println("Cart has been clear");
+    }
     public void sortByTitle() {
         itemsOrdered.sort(Media.COMPARATOR_BY_TITLE_COST);
     }
