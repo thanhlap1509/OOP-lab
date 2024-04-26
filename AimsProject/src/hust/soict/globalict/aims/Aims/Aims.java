@@ -201,6 +201,7 @@ public class Aims {
                         System.out.print("Please enter CD director: ");
                         String director = scanner.nextLine();
                         CompactDisc cd = new CompactDisc(id, title, category, director, 0, cost, artist);
+                        //get number of track for cd and add each track
                         System.out.print("How many track do you want to add: ");
                         int numberOfTrack = getInt();
                         for (int i = 0; i < numberOfTrack; i++){
@@ -211,6 +212,7 @@ public class Aims {
                             Track track = new Track(trackTitle, length);
                             cd.addTrack(track);
                         }
+                        //finally, add cd to store
                         store.addMedia(cd);
                     } else {
                         System.out.print("Enter DVD title: ");
@@ -268,6 +270,7 @@ public class Aims {
                     choice = scanner.nextLine();
                 }
                 if (choice.equals("id")){
+                    System.out.print("Enter the id that you want to search: ");
                     int id = getInt();
                     cart.searchById(id);
                 }
