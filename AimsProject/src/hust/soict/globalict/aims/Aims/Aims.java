@@ -324,6 +324,7 @@ public class Aims {
             case 5:
                 System.out.println("An order has been created");
                 cart.clear();
+                showMenu();
                 return;
         }
     }
