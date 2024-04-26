@@ -19,7 +19,7 @@ public class Aims {
     }
     public static void getUserInput(int l, int g){
         userOpt = -1;
-        userOptStr = scanner.nextLine();
+        userOptStr = scanner.nextLine().strip();
         try {
             userOpt = Integer.parseInt(userOptStr);
         } catch (NumberFormatException e){
@@ -75,7 +75,7 @@ public class Aims {
             switch(userOpt){
                 case 1:
                     System.out.print("Please enter a title: ");
-                    userOptStr = scanner.nextLine();
+                    userOptStr = scanner.nextLine().strip();
                     Media media = store.searchByTitle(userOptStr);
                     if (media == null) {
                         System.out.println("There is no media with that title");
@@ -87,7 +87,7 @@ public class Aims {
                     return;
                 case 2:
                     System.out.print("Please enter the title of media that you want to add: ");
-                    userOptStr = scanner.nextLine();
+                    userOptStr = scanner.nextLine().strip();
                     Media returnMedia = store.searchByTitle(userOptStr);
                     if (returnMedia == null){
                         System.out.println("There is no media with that title");
@@ -125,7 +125,7 @@ public class Aims {
             switch(userOpt){
                 case 1:
                     System.out.print("Please enter the title of media that you want to add: ");
-                    userOptStr = scanner.nextLine();
+                    userOptStr = scanner.nextLine().strip();
                     Media returnMedia = store.searchByTitle(userOptStr);
                     if (returnMedia == null){
                         System.out.println("There is no media with that title");
@@ -162,15 +162,15 @@ public class Aims {
                     float cost;
                     while (!userOptStr.equals("Book") && !userOptStr.equals("DVD") && !userOptStr.equals("CD")) {
                         System.out.print("What type of media do you want to add(Book/CD/DVD): ");
-                        userOptStr = scanner.nextLine();
+                        userOptStr = scanner.nextLine().strip();
                     }
                     if (userOptStr.equals("Book")) {
                         System.out.print("Enter book id: ");
                         int id = getInt();
                         System.out.print("Enter book title: ");
-                        title = scanner.nextLine();
+                        title = scanner.nextLine().strip();
                         System.out.print("Enter book category: ");
-                        category = scanner.nextLine();
+                        category = scanner.nextLine().strip();
                         System.out.print("Enter book cost: ");
                         cost = getFloat();
                         Book book = new Book(id, title, category, cost);
@@ -179,7 +179,7 @@ public class Aims {
                         String authorName = "";
                         for (int i = 0; i < author; i++){
                             System.out.print("Enter author name: ");
-                            authorName = scanner.nextLine();
+                            authorName = scanner.nextLine().strip();
                              if (book.addAuthor(authorName) == 0){
                                  i--;
                              };
@@ -189,22 +189,22 @@ public class Aims {
                         System.out.print("Please enter CD id: ");
                         int id = getInt();
                         System.out.print("Enter CD title: ");
-                        title = scanner.nextLine();
+                        title = scanner.nextLine().strip();
                         System.out.print("Enter CD category: ");
-                        category = scanner.nextLine();
+                        category = scanner.nextLine().strip();
                         System.out.print("Enter CD cost: ");
                         cost = getFloat();
                         System.out.print("Please enter CD artist: ");
-                        String artist = scanner.nextLine();
+                        String artist = scanner.nextLine().strip();
                         System.out.print("Please enter CD director: ");
-                        String director = scanner.nextLine();
+                        String director = scanner.nextLine().strip();
                         CompactDisc cd = new CompactDisc(id, title, category, director, 0, cost, artist);
                         //get number of track for cd and add each track
                         System.out.print("How many track do you want to add: ");
                         int numberOfTrack = getInt();
                         for (int i = 0; i < numberOfTrack; i++){
                             System.out.print("Enter track title: ");
-                            String trackTitle = scanner.nextLine();
+                            String trackTitle = scanner.nextLine().strip();
                             System.out.print("Enter track length: ");
                             int length = getInt();
                             Track track = new Track(trackTitle, length);
@@ -214,13 +214,13 @@ public class Aims {
                         store.addMedia(cd);
                     } else {
                         System.out.print("Enter DVD title: ");
-                        title = scanner.nextLine();
+                        title = scanner.nextLine().strip();
                         System.out.print("Enter DVD category: ");
-                        category = scanner.nextLine();
+                        category = scanner.nextLine().strip();
                         System.out.print("Enter DVD cost: ");
                         cost = getFloat();
                         System.out.print("Please enter DVD director: ");
-                        String director = scanner.nextLine();
+                        String director = scanner.nextLine().strip();
                         System.out.print("Please enter DVD length: ");
                         int length = getInt();
                         DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
@@ -230,7 +230,7 @@ public class Aims {
                     return;
                 case 2:
                     System.out.print("Enter title of media that you want to remove: ");
-                    title = scanner.nextLine();
+                    title = scanner.nextLine().strip();
                     Media mediaToDelete = store.searchByTitle(title);
                     if (mediaToDelete == null){
                         System.out.println("There is no media by that title");
@@ -265,7 +265,7 @@ public class Aims {
                 String choice = " ";
                 while (!choice.equals("id") && !choice.equals("title")){
                     System.out.print("Choose filtering option (id/title): ");
-                    choice = scanner.nextLine();
+                    choice = scanner.nextLine().strip();
                 }
                 if (choice.equals("id")){
                     System.out.print("Enter the id that you want to search: ");
@@ -281,7 +281,7 @@ public class Aims {
                 choice = " ";
                 while (!choice.equals("cost") && !choice.equals("title")){
                     System.out.print("Choose filtering option (cost/title): ");
-                    choice = scanner.nextLine();
+                    choice = scanner.nextLine().strip();
                 }
                 if (choice.equals("title")){
                     cart.sortByTitle();
@@ -293,7 +293,7 @@ public class Aims {
                 return;
             case 3:
                 System.out.print("Enter title of the media that you want to remove: ");
-                String title = scanner.nextLine();
+                String title = scanner.nextLine().strip();
                 cart.removeMedia(title);
                 cartMenu();
                 return;
@@ -315,10 +315,10 @@ public class Aims {
             } catch(NumberFormatException | InputMismatchException e){
                 System.out.print("Please enter again: ");
                 temp = -1;
-                scanner.nextLine();
+                scanner.nextLine().strip();
             }
         }
-        scanner.nextLine();
+        scanner.nextLine().strip();
         return temp;
     }
     public static float getFloat() {
@@ -329,15 +329,15 @@ public class Aims {
             } catch(NumberFormatException | InputMismatchException e){
                 System.out.print("Please enter again: ");
                 temp = -1f;
-                scanner.nextLine();
+                scanner.nextLine().strip();
             }
         }
-        scanner.nextLine();
+        scanner.nextLine().strip();
         return temp;
     }
     public static void playMedia(){
         System.out.print("Please enter the title of media that you want to play: ");
-        userOptStr = scanner.nextLine();
+        userOptStr = scanner.nextLine().strip();
         Media returnMedia = store.searchByTitle(userOptStr);
         if (returnMedia == null){
             System.out.println("There is no media with that title");
