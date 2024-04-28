@@ -25,7 +25,7 @@ public class Track implements Playable {
             System.out.println("Playing Track: " + this.getTitle());
             System.out.println("Track length: " + this.getLength());
         }
-        System.out.println("Track " + this.getTitle() + " can not be played");
+        else System.out.println("Track " + this.getTitle() + " can not be played");
     }
     @Override
     public boolean equals(Object o){
