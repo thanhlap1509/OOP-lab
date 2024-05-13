@@ -28,6 +28,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     private JScrollPane scrollPane;
     private Container cp;
     private JButton button;
+    private Book bookToAdd;
     public StoreManagerScreen(Store store){
         this.store = store;
         cp = getContentPane();
@@ -179,7 +180,28 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     store.addMedia(new DigitalVideoDisc(item.getTitle(), item.getCategory(), item.getDirector(), item.getLength(), item.getCost()));
                     addNewMedia();
                     break;
+                case "Create Book":
+                    AddBookToStoreScreen book = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
+                    bookToAdd = new Book(book.getId(), book.getTitle(), book.getCategory(), book.getCost());
+                    center.removeAll();
+                    createScrollPane(new AddBookToStoreScreen(book.getAuthorsNum()));
+                    center.add(scrollPane);
+                    button.setText("Add Book");
+                    center.add(button);
+                    center.revalidate();
+                    center.repaint();
+                    System.out.println("Book created");
+                    break;
                 case "Add Book":
+                    AddBookToStoreScreen bk = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
+                    ArrayList<TextField> authorName = bk.getAuthorstf();
+                    for (TextField tf : authorName){
+                        bookToAdd.addAuthor(tf.getText());
+                    }
+                    store.addMedia(bookToAdd);
+                    addNewMedia();
+                    System.out.println("Authors added in book");
+                    break;
             }
         }
         else{
@@ -199,7 +221,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     //TODO: implement new center to add book
                     createScrollPane(new AddBookToStoreScreen());
                     center.add(scrollPane);
-                    button.setText("Add DVD");
+                    button.setText("Create Book");
                     center.add(button);
                     center.revalidate();
                     center.repaint();

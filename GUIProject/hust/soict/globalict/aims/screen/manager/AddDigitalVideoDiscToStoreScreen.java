@@ -17,10 +17,10 @@ public class AddDigitalVideoDiscToStoreScreen extends JPanel {
     public AddDigitalVideoDiscToStoreScreen(){
         this.setLayout(new GridLayout(0, 2, 0, 3));
         jlTitle = new JLabel("Enter an title: ");
-        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 50));
+        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 200));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
         tfTitle = new TextField(5);
-        tfTitle.setPreferredSize(new Dimension(1010 / 2, 50));
+        tfTitle.setPreferredSize(new Dimension(1010 / 2, 200));
         this.add(jlTitle);
         this.add(tfTitle);
         jlCategory = new JLabel("Enter a category: ");
@@ -52,7 +52,5 @@ public class AddDigitalVideoDiscToStoreScreen extends JPanel {
     public int getLength(){
         return Integer.parseInt(tfLength.getText());
     }
-    public float getCost(){
-        return Float.parseFloat(tfCost.getText());
-    }
+    public float getCost(){return Float.parseFloat(tfCost.getText());}
 }
