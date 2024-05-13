@@ -106,7 +106,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
             }
         }
         scrollPane = new JScrollPane(storeItem, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setPreferredSize(new Dimension(1010, 623));
+        scrollPane.setPreferredSize(new Dimension(1010, 610));
     }
     public static void main(String[] args){
         Store store = new Store();
@@ -159,6 +159,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         store.addMedia(cd1);
         store.addMedia(cd2);
         store.addMedia(cd3);
+        store.addMedia(book3);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
