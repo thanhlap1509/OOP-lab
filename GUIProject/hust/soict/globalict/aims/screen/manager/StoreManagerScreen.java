@@ -25,9 +25,10 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JPanel storeItem;
     private JScrollPane scrollPane;
+    private Container cp;
     public StoreManagerScreen(Store store){
         this.store = store;
-        Container cp = getContentPane();
+        cp = getContentPane();
         cp.setLayout(new BorderLayout());
         north = createNorth();
         cp.add(north, BorderLayout.NORTH);
@@ -164,7 +165,8 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         String text = ((JMenuItem)e.getSource()).getText();
         switch(text){
             case "View store":
-                System.out.println("viewing store");break;
+                System.out.println("View store");
+                break;
             case "Add Book":
                 System.out.println("Adding book");break;
             case "Add CD":
