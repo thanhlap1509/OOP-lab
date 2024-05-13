@@ -29,6 +29,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     private Container cp;
     private JButton button;
     private Book bookToAdd;
+    private CompactDisc cdToAdd;
     public StoreManagerScreen(Store store){
         this.store = store;
         cp = getContentPane();
@@ -43,7 +44,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
 
         setTitle("Store");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1024, 768);
+        setSize(1024, 600);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -118,7 +119,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     }
     public void createScrollPane(JPanel panel){
         scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setPreferredSize(new Dimension(1010, 600));
+        scrollPane.setPreferredSize(new Dimension(1010, 450));
     }
     public static void main(String[] args){
         Store store = new Store();
@@ -176,9 +177,10 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         if (e.getSource() instanceof JButton){
             switch(((JButton) e.getSource()).getText()){
                 case "Add DVD":
-                    AddDigitalVideoDiscToStoreScreen item = (AddDigitalVideoDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    store.addMedia(new DigitalVideoDisc(item.getTitle(), item.getCategory(), item.getDirector(), item.getLength(), item.getCost()));
+                    AddDigitalVideoDiscToStoreScreen dvd = (AddDigitalVideoDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
+                    store.addMedia(new DigitalVideoDisc(dvd.getTitle(), dvd.getCategory(), dvd.getDirector(), dvd.getLength(), dvd.getCost()));
                     addNewMedia();
+                    returnToViewStore();
                     break;
                 case "Create Book":
                     AddBookToStoreScreen book = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
@@ -193,14 +195,40 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     System.out.println("Book created");
                     break;
                 case "Add Book":
-                    AddBookToStoreScreen bk = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    ArrayList<TextField> authorName = bk.getAuthorstf();
+                    AddBookToStoreScreen book_author = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
+                    ArrayList<TextField> authorName = book_author.getAuthorstf();
                     for (TextField tf : authorName){
                         bookToAdd.addAuthor(tf.getText());
                     }
                     store.addMedia(bookToAdd);
                     addNewMedia();
                     System.out.println("Authors added in book");
+                    returnToViewStore();
+                    break;
+                case "Create CD":
+                    AddCompactDiscToStoreScreen cd = (AddCompactDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
+                    cdToAdd = new CompactDisc(cd.getId(), cd.getTitle(), cd.getCategory(), cd.getDirector(), cd.getLength(), cd.getCost(), cd.getArtist());
+                    center.removeAll();
+                    createScrollPane(new AddCompactDiscToStoreScreen(cd.getTrackNum()));
+                    center.add(scrollPane);
+                    button.setText("Add Tracks");
+                    center.add(button);
+                    center.revalidate();
+                    center.repaint();
+                    System.out.println("CD created");
+                    break;
+                case "Add Tracks":
+                    AddCompactDiscToStoreScreen tracks = (AddCompactDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
+                    ArrayList<TextField> tracksList = tracks.getTrackList();
+                    for (int i = 0; i < tracksList.size();){
+                        Track track = new Track(tracksList.get(i).getText(), Integer.parseInt(tracksList.get(i + 1).getText()));
+                        cdToAdd.addTrack(track);
+                        i += 2;
+                    }
+                    store.addMedia(cdToAdd);
+                    addNewMedia();
+                    System.out.println("Tracks added in cd");
+                    returnToViewStore();
                     break;
             }
         }
@@ -208,13 +236,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
             String text = ((JMenuItem) e.getSource()).getText();
             switch (text) {
                 case "View store":
-                    center.removeAll();
-                    //remove all component and add view store screen
-                    createScrollPane(storeItem);
-                    center.add(scrollPane);
-                    center.revalidate();
-                    center.repaint();
-                    System.out.println("View store");
+                    returnToViewStore();
                     break;
                 case "Add Book":
                     center.removeAll();
@@ -230,6 +252,10 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                 case "Add CD":
                     center.removeAll();
                     //TODO: implement new center to add CD
+                    createScrollPane(new AddCompactDiscToStoreScreen());
+                    center.add(scrollPane);
+                    button.setText("Create CD");
+                    center.add(button);
                     center.revalidate();
                     center.repaint();
                     System.out.println("Adding CD");
@@ -247,5 +273,15 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     break;
             }
         }
+    }
+
+    private void returnToViewStore() {
+        center.removeAll();
+        //remove all component and add view store screen
+        createScrollPane(storeItem);
+        center.add(scrollPane);
+        center.revalidate();
+        center.repaint();
+        System.out.println("View store");
     }
 }

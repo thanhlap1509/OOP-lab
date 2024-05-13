@@ -32,7 +32,7 @@ public class MediaStore extends JPanel {
         this.add(cost);
         this.add(Box.createVerticalGlue());
         this.add(container);
-        this.setPreferredSize(new Dimension(985 / 3, 590 / 3));
+        this.setPreferredSize(new Dimension(985 / 3, 500 / 3));
         this.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 }

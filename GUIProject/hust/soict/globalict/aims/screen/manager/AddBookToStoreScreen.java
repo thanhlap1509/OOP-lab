@@ -24,10 +24,10 @@ public class AddBookToStoreScreen extends JPanel{
         this.add(jlId);
         this.add(tfId);
         jlTitle = new JLabel("Enter an title: ");
-        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 200));
+        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 100));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
         tfTitle = new TextField(5);
-        tfTitle.setPreferredSize(new Dimension(1010 / 2, 200));
+        tfTitle.setPreferredSize(new Dimension(1010 / 2, 100));
         this.add(jlTitle);
         this.add(tfTitle);
         jlCategory = new JLabel("Enter a category: ");
@@ -44,12 +44,12 @@ public class AddBookToStoreScreen extends JPanel{
         this.add(tfAuthor);
     }
     public AddBookToStoreScreen(int num){
-        this.setLayout(new GridLayout(0, 2, 0, 3));
+        this.setLayout(new GridLayout(num, 2, 0, 3));
         alAuthorLabel = new ArrayList<>();
         alAuthortf = new ArrayList<>();
         for (int i = 0; i < num;i++){
-            JLabel label = new JLabel("Enter author " + (i + 1) + ": ");
-            label.setPreferredSize(new Dimension(1010/ 2, 200));
+            JLabel label = new JLabel("Enter author " + (i + 1) + " : ");
+            label.setPreferredSize(new Dimension(1010/ 2, 100));
             label.setHorizontalAlignment(JLabel.LEFT);
             TextField tf = new TextField(5);
             alAuthorLabel.add(label);
