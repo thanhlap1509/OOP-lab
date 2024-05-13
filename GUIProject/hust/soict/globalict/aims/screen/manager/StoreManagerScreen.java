@@ -9,6 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.Box;
 import javax.swing.JMenuBar;
+import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JMenuItem;
@@ -26,6 +27,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     private JPanel storeItem;
     private JScrollPane scrollPane;
     private Container cp;
+    private JButton button;
     public StoreManagerScreen(Store store){
         this.store = store;
         cp = getContentPane();
@@ -34,6 +36,9 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         cp.add(north, BorderLayout.NORTH);
         center = createCenter();
         cp.add(center, BorderLayout.CENTER);
+
+        button = new JButton();
+        button.addActionListener(this);
 
         setTitle("Store");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,8 +110,14 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                 storeItem.add(cell);
             }
         }
-        scrollPane = new JScrollPane(storeItem, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setPreferredSize(new Dimension(1010, 610));
+        createScrollPane(storeItem);
+    }
+    public void addNewMedia(){
+        storeItem.add(new MediaStore(store.getItemsInStore().get(store.getItemsInStore().size() - 1)));
+    }
+    public void createScrollPane(JPanel panel){
+        scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setPreferredSize(new Dimension(1010, 600));
     }
     public static void main(String[] args){
         Store store = new Store();
@@ -132,7 +143,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         store.addMedia(book);
         store.addMedia(book1);
         store.addMedia(book2);
-        Book book3 = new Book("sth", "Fiction", 22.4f);
 
         CompactDisc cd1 = new CompactDisc("30", "Music","Adele", 1500.98f);
         Track track1CD1 = new Track("All Night Parking (interlude)", 161);
@@ -159,21 +169,61 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         store.addMedia(cd1);
         store.addMedia(cd2);
         store.addMedia(cd3);
-        store.addMedia(book3);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        String text = ((JMenuItem)e.getSource()).getText();
-        switch(text){
-            case "View store":
-                System.out.println("View store");
-                break;
-            case "Add Book":
-                System.out.println("Adding book");break;
-            case "Add CD":
-                System.out.println("Adding CD");break;
-            case "Add DVD":
-                System.out.println("Adding DVD");break;
+        if (e.getSource() instanceof JButton){
+            switch(((JButton) e.getSource()).getText()){
+                case "Add DVD":
+                    AddDigitalVideoDiscToStoreScreen item = (AddDigitalVideoDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
+                    store.addMedia(new DigitalVideoDisc(item.getTitle(), item.getCategory(), item.getDirector(), item.getLength(), item.getCost()));
+                    addNewMedia();
+                    break;
+                case "Add Book":
+            }
+        }
+        else{
+            String text = ((JMenuItem) e.getSource()).getText();
+            switch (text) {
+                case "View store":
+                    center.removeAll();
+                    //remove all component and add view store screen
+                    createScrollPane(storeItem);
+                    center.add(scrollPane);
+                    center.revalidate();
+                    center.repaint();
+                    System.out.println("View store");
+                    break;
+                case "Add Book":
+                    center.removeAll();
+                    //TODO: implement new center to add book
+                    createScrollPane(new AddBookToStoreScreen());
+                    center.add(scrollPane);
+                    button.setText("Add DVD");
+                    center.add(button);
+                    center.revalidate();
+                    center.repaint();
+                    System.out.println("Adding book");
+                    break;
+                case "Add CD":
+                    center.removeAll();
+                    //TODO: implement new center to add CD
+                    center.revalidate();
+                    center.repaint();
+                    System.out.println("Adding CD");
+                    break;
+                case "Add DVD":
+                    center.removeAll();
+                    //TODO: implement new center to add DVD
+                    createScrollPane(new AddDigitalVideoDiscToStoreScreen());
+                    center.add(scrollPane);
+                    button.setText("Add DVD");
+                    center.add(button);
+                    center.revalidate();
+                    center.repaint();
+                    System.out.println("Adding DVD");
+                    break;
+            }
         }
     }
 }
