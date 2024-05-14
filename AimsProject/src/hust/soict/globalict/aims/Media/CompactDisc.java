@@ -67,6 +67,10 @@ public class CompactDisc extends Disc implements Playable {
         return artist;
     }
 
+    public ArrayList<Track> getTracks() {
+        return tracks;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
