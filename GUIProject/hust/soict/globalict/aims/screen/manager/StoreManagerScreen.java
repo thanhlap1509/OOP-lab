@@ -107,8 +107,8 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         storeItem.setLayout(new GridLayout(0, 3, 3, 3));
         ArrayList<Media> mediaInStore = store.getItemsInStore();
         if (!mediaInStore.isEmpty()){
-            for (int i = 0; i < mediaInStore.size(); i++){
-                MediaStore cell = new MediaStore(mediaInStore.get(i));
+            for (Media media : mediaInStore) {
+                MediaStore cell = new MediaStore(media);
                 storeItem.add(cell);
             }
         }
