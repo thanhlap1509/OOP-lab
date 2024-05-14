@@ -44,7 +44,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
 
         setTitle("Store");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1024, 600);
+        setSize(1024, 650);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -119,7 +119,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     }
     public void createScrollPane(JPanel panel){
         scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setPreferredSize(new Dimension(1010, 450));
+        scrollPane.setPreferredSize(new Dimension(1010, 480));
     }
     public static void main(String[] args){
         Store store = new Store();

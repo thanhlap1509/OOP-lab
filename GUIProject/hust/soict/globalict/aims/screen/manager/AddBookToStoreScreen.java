@@ -18,45 +18,51 @@ public class AddBookToStoreScreen extends JPanel{
     private ArrayList<JLabel> alAuthorLabel;
     private ArrayList<TextField> alAuthortf;
     public AddBookToStoreScreen(){
-        this.setLayout(new GridLayout(0, 2, 0, 3));
+        this.setLayout(new FlowLayout());
+        JPanel holder = new JPanel();
+        holder.setLayout(new GridLayout(0, 2, 0, 3));
         jlId = new JLabel("Enter an id: ");
-        tfId = new TextField(5);
-        this.add(jlId);
-        this.add(tfId);
+        tfId = new TextField(30);
+        holder.add(jlId);
+        holder.add(tfId);
         jlTitle = new JLabel("Enter an title: ");
-        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 100));
+        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 50));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
-        tfTitle = new TextField(5);
-        tfTitle.setPreferredSize(new Dimension(1010 / 2, 100));
-        this.add(jlTitle);
-        this.add(tfTitle);
+        tfTitle = new TextField(30);
+        tfTitle.setPreferredSize(new Dimension(1010 / 2, 50));
+        holder.add(jlTitle);
+        holder.add(tfTitle);
         jlCategory = new JLabel("Enter a category: ");
-        tfCategory = new TextField(5);
-        this.add(jlCategory);
-        this.add(tfCategory);
+        tfCategory = new TextField(30);
+        holder.add(jlCategory);
+        holder.add(tfCategory);
         jlCost = new JLabel("Enter the cost: ");
-        tfCost = new TextField(5);
-        this.add(jlCost);
-        this.add(tfCost);
+        tfCost = new TextField(30);
+        holder.add(jlCost);
+        holder.add(tfCost);
         jlAuthor = new JLabel("Enter the number of authors: ");
-        tfAuthor = new TextField(5);
-        this.add(jlAuthor);
-        this.add(tfAuthor);
+        tfAuthor = new TextField(30);
+        holder.add(jlAuthor);
+        holder.add(tfAuthor);
+        this.add(holder);
     }
     public AddBookToStoreScreen(int num){
-        this.setLayout(new GridLayout(num, 2, 0, 3));
+        this.setLayout(new FlowLayout());
+        JPanel holder = new JPanel();
+        holder.setLayout(new GridLayout(num, 2, 0, 3));
         alAuthorLabel = new ArrayList<>();
         alAuthortf = new ArrayList<>();
         for (int i = 0; i < num;i++){
             JLabel label = new JLabel("Enter author " + (i + 1) + " : ");
-            label.setPreferredSize(new Dimension(1010/ 2, 100));
+            label.setPreferredSize(new Dimension(1010/2, 50));
             label.setHorizontalAlignment(JLabel.LEFT);
-            TextField tf = new TextField(5);
+            TextField tf = new TextField(30);
             alAuthorLabel.add(label);
             alAuthortf.add(tf);
-            this.add(label);
-            this.add(tf);
+            holder.add(label);
+            holder.add(tf);
         }
+        this.add(holder);
     }
     public int getId() {return Integer.parseInt(tfId.getText());}
     public String getTitle(){
