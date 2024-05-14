@@ -15,30 +15,33 @@ public class AddDigitalVideoDiscToStoreScreen extends JPanel {
     private TextField tfDirector;
     private TextField tfLength;
     public AddDigitalVideoDiscToStoreScreen(){
-        this.setLayout(new GridLayout(0, 2, 0, 3));
+        this.setLayout(new FlowLayout());
+        JPanel holder = new JPanel();
+        holder.setLayout(new GridLayout(0, 2, 0, 3));
         jlTitle = new JLabel("Enter an title: ");
         jlTitle.setPreferredSize(new Dimension(1010 / 2 , 100));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
         tfTitle = new TextField(5);
         tfTitle.setPreferredSize(new Dimension(1010 / 2, 100));
-        this.add(jlTitle);
-        this.add(tfTitle);
+        holder.add(jlTitle);
+        holder.add(tfTitle);
         jlCategory = new JLabel("Enter a category: ");
         tfCategory = new TextField(5);
-        this.add(jlCategory);
-        this.add(tfCategory);
+        holder.add(jlCategory);
+        holder.add(tfCategory);
         jlDirector = new JLabel("Enter the Director: ");
         tfDirector = new TextField(5);
-        this.add(jlDirector);
-        this.add(tfDirector);
+        holder.add(jlDirector);
+        holder.add(tfDirector);
         jlLength = new JLabel("Enter the Length: ");
         tfLength = new TextField(5);
-        this.add(jlLength);
-        this.add(tfLength);
+        holder.add(jlLength);
+        holder.add(tfLength);
         jlCost = new JLabel("Enter the cost: ");
         tfCost = new TextField(5);
-        this.add(jlCost);
-        this.add(tfCost);
+        holder.add(jlCost);
+        holder.add(tfCost);
+        this.add(holder);
     }
     public String getTitle(){
         return tfTitle.getText();
