@@ -42,7 +42,7 @@ public class MediaStore extends JPanel implements MouseListener {
         this.add(cost);
         this.add(Box.createVerticalGlue());
         this.add(container);
-        this.setPreferredSize(new Dimension(985 / 3, 600 / 3));
+        this.setPreferredSize(new Dimension(985 / 3, 590 / 3));
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         this.addMouseListener(this);
     }
@@ -55,6 +55,8 @@ public class MediaStore extends JPanel implements MouseListener {
                 title = "CD";
                 JDialog dialog = new JDialog(new JFrame(), "Playing " + title, true);
                 dialog.setLayout(new FlowLayout());
+                JPanel motherPanel = new JPanel();
+                motherPanel.setLayout(new FlowLayout());
 
                 JPanel holder = new JPanel();
                 holder.setLayout(new GridLayout(0, 1, 0, 0));
@@ -67,18 +69,35 @@ public class MediaStore extends JPanel implements MouseListener {
                 ArrayList<Track> trackList = ((CompactDisc) media).getTracks();
                 for (int i = 0; i < trackList.size(); i++){
                     JLabel titleLabel = new JLabel("<html>Playing track: " + trackList.get(i).getTitle() + "<br>" + "Track Length: " + trackList.get(i).getLength() + "</html>");
-                    titleLabel.setPreferredSize(new Dimension(370, 35));
+                    titleLabel.setPreferredSize(new Dimension(370, 40));
                     titleLabel.setHorizontalAlignment(JLabel.LEFT);
                     titleLabel.setVerticalAlignment(JLabel.TOP);
                     holder.add(titleLabel);
                 }
-                dialog.add(holder);
+                motherPanel.add(holder);
+                JScrollPane scrollpane = new JScrollPane(motherPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                scrollpane.setPreferredSize(new Dimension(360, 300));
+                dialog.add(scrollpane);
                 dialog.setSize(400, 400);
                 dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
             }
             else if (media instanceof DigitalVideoDisc) {
                 title = "DVD";
+                JDialog dialog = new JDialog(new JFrame(), "Playing " + title, true);
+                dialog.setLayout(new FlowLayout());
+
+                JLabel panel = new JLabel();
+                if (((DigitalVideoDisc) media).getLength() > 0){
+                    panel.setText("<html>Playing DVD: " + media.getTitle() + "<br>" + "DVD Length: " + ((DigitalVideoDisc) media).getLength() + "</html>");
+                }
+                else panel.setText("DVD " + media.getTitle() + " can not be play");
+                panel.setPreferredSize(new Dimension(370, 50));
+                panel.setHorizontalAlignment(JLabel.LEFT);
+                dialog.add(panel);
+                dialog.setSize(400, 400);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
             }
         }
     }
