@@ -1,4 +1,4 @@
-package GUIProject.hust.soict.globalict.aims.screen.manager;
+package AimsProject.src.hust.soict.globalict.aims.screen.manager;
 
 import OtherProjects.Lab01.Array;
 

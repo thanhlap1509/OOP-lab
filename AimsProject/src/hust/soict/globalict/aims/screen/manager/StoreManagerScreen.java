@@ -1,4 +1,4 @@
-package GUIProject.hust.soict.globalict.aims.screen.manager;
+package AimsProject.src.hust.soict.globalict.aims.screen.manager;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.*;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
@@ -192,7 +192,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     center.add(button);
                     center.revalidate();
                     center.repaint();
-                    System.out.println("Book created");
                     break;
                 case "Add Book":
                     AddBookToStoreScreen book_author = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
@@ -202,7 +201,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     }
                     store.addMedia(bookToAdd);
                     addNewMedia();
-                    System.out.println("Authors added in book");
                     returnToViewStore();
                     break;
                 case "Create CD":
@@ -215,7 +213,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     center.add(button);
                     center.revalidate();
                     center.repaint();
-                    System.out.println("CD created");
                     break;
                 case "Add Tracks":
                     AddCompactDiscToStoreScreen tracks = (AddCompactDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
@@ -227,7 +224,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     }
                     store.addMedia(cdToAdd);
                     addNewMedia();
-                    System.out.println("Tracks added in cd");
                     returnToViewStore();
                     break;
             }
@@ -247,7 +243,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     center.add(button);
                     center.revalidate();
                     center.repaint();
-                    System.out.println("Adding book");
                     break;
                 case "Add CD":
                     center.removeAll();
@@ -258,7 +253,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     center.add(button);
                     center.revalidate();
                     center.repaint();
-                    System.out.println("Adding CD");
                     break;
                 case "Add DVD":
                     center.removeAll();
@@ -269,7 +263,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     center.add(button);
                     center.revalidate();
                     center.repaint();
-                    System.out.println("Adding DVD");
                     break;
             }
         }
@@ -282,6 +275,5 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         center.add(scrollPane);
         center.revalidate();
         center.repaint();
-        System.out.println("View store");
     }
 }

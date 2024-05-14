@@ -1,4 +1,4 @@
-package GUIProject.hust.soict.globalict.aims.screen.manager;
+package AimsProject.src.hust.soict.globalict.aims.screen.manager;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
