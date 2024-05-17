@@ -33,10 +33,10 @@ public class AddCompactDiscToStoreScreen extends JPanel {
         holder.add(jlId);
         holder.add(tfId);
         jlTitle = new JLabel("Enter an title: ");
-        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 50));
+        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 30));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
         tfTitle = new TextField(30);
-        tfTitle.setPreferredSize(new Dimension(1010 / 2, 50));
+        tfTitle.setPreferredSize(new Dimension(1010 / 2, 30));
         holder.add(jlTitle);
         holder.add(tfTitle);
         jlCategory = new JLabel("Enter a category: ");
@@ -74,7 +74,7 @@ public class AddCompactDiscToStoreScreen extends JPanel {
         alTracktf = new ArrayList<>();
         for (int i = 0; i < trackNum; i++){
             JLabel Titlelabel = new JLabel("Enter title for track " + (i + 1) + " : ");
-            Titlelabel.setPreferredSize(new Dimension(1010 / 4, 50));
+            Titlelabel.setPreferredSize(new Dimension(1010 / 4, 30));
             Titlelabel.setHorizontalAlignment(JLabel.LEFT);
             TextField Titletf = new TextField(13);
             JLabel Lengthlabel = new JLabel("Enter length for track " + (i + 1) + " : ");
