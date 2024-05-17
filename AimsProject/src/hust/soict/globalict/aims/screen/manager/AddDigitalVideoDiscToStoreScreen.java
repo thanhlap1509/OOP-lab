@@ -19,10 +19,10 @@ public class AddDigitalVideoDiscToStoreScreen extends JPanel {
         JPanel holder = new JPanel();
         holder.setLayout(new GridLayout(0, 2, 3, 3));
         jlTitle = new JLabel("Enter an title: ");
-        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 50));
+        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 30));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
         tfTitle = new TextField(5);
-        tfTitle.setPreferredSize(new Dimension(1010 / 2, 50));
+        tfTitle.setPreferredSize(new Dimension(1010 / 2, 30));
         holder.add(jlTitle);
         holder.add(tfTitle);
         jlCategory = new JLabel("Enter a category: ");
