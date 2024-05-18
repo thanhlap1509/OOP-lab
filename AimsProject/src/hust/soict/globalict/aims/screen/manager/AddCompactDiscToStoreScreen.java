@@ -33,10 +33,10 @@ public class AddCompactDiscToStoreScreen extends JPanel {
         holder.add(jlId);
         holder.add(tfId);
         jlTitle = new JLabel("Enter an title: ");
-        jlTitle.setPreferredSize(new Dimension(1010 / 2 , 30));
+        jlTitle.setPreferredSize(new Dimension(1010 / 2 - 10 , 30));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
         tfTitle = new TextField(30);
-        tfTitle.setPreferredSize(new Dimension(1010 / 2, 30));
+        tfTitle.setPreferredSize(new Dimension(1010 / 2 - 10, 30));
         holder.add(jlTitle);
         holder.add(tfTitle);
         jlCategory = new JLabel("Enter a category: ");

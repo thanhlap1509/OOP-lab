@@ -120,7 +120,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     }
     public void createScrollPane(JPanel panel){
         scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        //scrollPane.setPreferredSize(new Dimension(1010, 590));
+        scrollPane.setPreferredSize(new Dimension(1010, 590));
     }
     public static void main(String[] args){
         Store store = new Store();
