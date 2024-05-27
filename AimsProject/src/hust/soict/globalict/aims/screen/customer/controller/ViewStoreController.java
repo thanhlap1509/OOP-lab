@@ -27,7 +27,7 @@ public class ViewStoreController {
 
     @FXML
     public void initialize(){
-        final String ITEM_FXML_FILE_PATH = "/hust/soict/globalict/aims/screen/customer/view/Item.fxml";
+        final String ITEM_FXML_FILE_PATH = "/AimsProject/src/hust/soict/globalict/aims/screen/customer/view/Item.fxml";
         int column = 0;
         int row = 1;
         for (int i = 0; i < store.getItemsInStore().size();i++){
