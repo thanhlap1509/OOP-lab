@@ -2,6 +2,8 @@ package GUIProject.hust.soict.globalict.javafx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -11,7 +13,8 @@ public class PaintController {
 
     @FXML
     private Pane drawingAreaPane;
-
+    @FXML
+    private ToggleGroup identical;
     @FXML
     void clearButtonPressed(ActionEvent event) {
     drawingAreaPane.getChildren().clear();
@@ -19,7 +22,12 @@ public class PaintController {
 
     @FXML
     void drawingAreaMouseDragged(MouseEvent event) {
-        Circle newCircle = new Circle(event.getX(), event.getY(), 4, Color.BLACK);
+        String radioButtonText = ((RadioButton) identical.getSelectedToggle()).getText();
+        Color paintColor = null;
+        if (radioButtonText.equals("Pen")){
+            paintColor = Color.BLACK;
+        } else paintColor = Color.WHITE;
+        Circle newCircle = new Circle(event.getX(), event.getY(), 4, paintColor);
         drawingAreaPane.getChildren().add(newCircle);
     }
 

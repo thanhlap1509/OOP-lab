@@ -2,6 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -17,6 +21,27 @@
             <Insets right="8.0" />
          </BorderPane.margin>
          <children>
+            <TitledPane animated="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="80.0" text="Tools">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="97.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="Pen">
+                           <padding>
+                              <Insets left="10.0" top="10.0" />
+                           </padding>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="identical" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton layoutY="17.0" mnemonicParsing="false" text="Eraser" toggleGroup="$identical">
+                           <padding>
+                              <Insets left="10.0" top="12.0" />
+                           </padding>
+                        </RadioButton>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
             <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clearButtonPressed" text="Clear">
                <font>
                   <Font size="13.0" />
