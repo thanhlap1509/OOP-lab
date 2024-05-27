@@ -25,7 +25,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="97.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Pen">
+                        <RadioButton mnemonicParsing="false" selected="true" text="Pen">
                            <padding>
                               <Insets left="10.0" top="10.0" />
                            </padding>

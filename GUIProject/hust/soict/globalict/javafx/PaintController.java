@@ -28,7 +28,10 @@ public class PaintController {
             paintColor = Color.BLACK;
         } else paintColor = Color.WHITE;
         Circle newCircle = new Circle(event.getX(), event.getY(), 4, paintColor);
-        drawingAreaPane.getChildren().add(newCircle);
+        if (drawingAreaPane.getBoundsInParent().contains(event.getX(), event.getY())){
+            drawingAreaPane.getChildren().add(newCircle);
+        }
+
     }
 
 }
