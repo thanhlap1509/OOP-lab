@@ -61,6 +61,9 @@ public class CartController {
     void btnRemovePressed(ActionEvent event) {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         ViewStoreController.removeFromCart(media);
+        for (Media m : ViewStoreController.getCart().getItemsOrdered()){
+            System.out.println(m.toString());
+        }
     }
 
     @FXML

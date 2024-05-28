@@ -25,9 +25,6 @@ public class ViewStoreController {
     }
     public static void addToCart(Media media){
         cart.addMedia(media);
-        for (Media m : cart.getItemsOrdered()){
-            System.out.println(m.toString());
-        }
     }
     public static void removeFromCart(Media media){
         cart.removeMedia(media);
