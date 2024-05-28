@@ -53,7 +53,8 @@ public class CartController {
 
     @FXML
     void btnRemovePressed(ActionEvent event) {
-
+        Media media = tblMedia.getSelectionModel().getSelectedItem();
+        cart.removeMedia(media);
     }
 
     @FXML
