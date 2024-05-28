@@ -12,11 +12,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CartController {
-    private Cart cart;
     private Store store;
-    public CartController(Store store, Cart cart){
+    public CartController(Store store){
         this.store = store;
-        this.cart = cart;
     }
     @FXML
     private Button btnPlay;
@@ -62,7 +60,7 @@ public class CartController {
     @FXML
     void btnRemovePressed(ActionEvent event) {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
-        cart.removeMedia(media);
+        ViewStoreController.removeFromCart(media);
     }
 
     @FXML
@@ -75,15 +73,15 @@ public class CartController {
         colMediaTitle.setCellValueFactory(new PropertyValueFactory<Media,String>("title"));
         colMediaCategory.setCellValueFactory(new PropertyValueFactory<Media, String>("category"));
         colMediaCost.setCellValueFactory(new PropertyValueFactory<Media, Float>("cost"));
-        if (cart.getItemsOrdered() != null){
-            tblMedia.setItems(cart.getItemsOrdered());
+        if (ViewStoreController.getCart().getItemsOrdered() != null){
+            tblMedia.setItems(ViewStoreController.getCart().getItemsOrdered());
         }
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
         tblMedia.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Media>() {
             @Override
-            public void changed(ObservableValue<? extends Media> observable, Media oldValud, Media newValue) {
+            public void changed(ObservableValue<? extends Media> observable, Media oldValue, Media newValue) {
                 updateButtonBar(newValue);
             }
         });

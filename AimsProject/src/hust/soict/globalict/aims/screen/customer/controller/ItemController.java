@@ -1,11 +1,11 @@
 package AimsProject.src.hust.soict.globalict.aims.screen.customer.controller;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
+import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 public class ItemController {
@@ -35,12 +35,22 @@ public class ItemController {
 
     @FXML
     void btnAddToCartClicked(ActionEvent event) {
-
+        ViewStoreController.addToCart(media);
     }
 
     @FXML
     void btnPlayClicked(ActionEvent event) {
+        Dialog<String> dialog = new Dialog<>();
+        DialogPane dialogPane = new DialogPane();
+        dialogPane.setContentText(((Playable) media).toString());
+        dialogPane.setHeaderText("Playing Media");
+        dialog.setDialogPane(dialogPane);
+        ButtonType closeButton = new ButtonType("Confirm");
+        dialog.getDialogPane().getButtonTypes().add(closeButton);
 
+        Button closeButtonNode = (Button) dialog.getDialogPane().lookupButton(closeButton);
+        closeButtonNode.setOnAction(e -> dialog.close());
+        dialog.showAndWait();
     }
 
 }

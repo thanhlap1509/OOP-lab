@@ -1,5 +1,6 @@
 package AimsProject.src.hust.soict.globalict.aims.screen.customer.controller;
 
+import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
 import javafx.event.ActionEvent;
@@ -17,12 +18,21 @@ import java.io.IOException;
 
 public class ViewStoreController {
     private Store store;
-    private Cart cart;
+    private static Cart cart;
     public ViewStoreController(Store store, Cart cart){
     this.store = store;
-    this.cart = cart;
+    ViewStoreController.cart = cart;
     }
-
+    public static void addToCart(Media media){
+        cart.addMedia(media);
+        for (Media m : cart.getItemsOrdered()){
+            System.out.println(m.toString());
+        }
+    }
+    public static void removeFromCart(Media media){
+        cart.removeMedia(media);
+    }
+    public static Cart getCart(){return cart;}
     @FXML
     private GridPane gridPane;
 
@@ -32,7 +42,7 @@ public class ViewStoreController {
         try{
             final String CART_FXML_FILE_PATH = "/AimsProject/src/hust/soict/globalict/aims/screen/customer/view/Cart.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
-            fxmlLoader.setController(new CartController(store,cart));
+            fxmlLoader.setController(new CartController(store));
             Parent root = fxmlLoader.load();
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

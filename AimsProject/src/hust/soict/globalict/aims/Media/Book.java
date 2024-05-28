@@ -6,25 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends Media {
-    private int id;
     private List<String> authors = new ArrayList<String>();
-    public Book(String title, String category, float cost) {
+    public Book(int id,String title, String category, float cost) {
+        setId(id);
         setTitle(title);
         setCategory(category);
         setCost(cost);
     }
-    public Book(int id, String title, String category, float cost) {
-        this.id = id;
-        setTitle(title);
-        setCategory(category);
-        setCost(cost);
-    }
-
     public Book(){
         setCost(0);
         setTitle("");
         setCategory("");
-        this.id = 0;
+        setId(0);
     }
     public int addAuthor(String authorName){
         for (String name : authors){
@@ -48,14 +41,6 @@ public class Book extends Media {
         System.out.println("There is no author name "  + authorName + " in the list");
         return 0;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public void toString(int i){
         System.out.print((i + 1)+ ". Book - " + this.getTitle() + " - " + this.getCategory() + " - ");
         if (authors.size() == 1){
@@ -70,4 +55,18 @@ public class Book extends Media {
         System.out.println(": " + this.getCost() + " $");
     }
 
+    public String toString(){
+        StringBuilder returnString = new StringBuilder("Book - " + this.getTitle() + " - " + this.getCategory() + " - ");
+        if (authors.size() == 1){
+            System.out.print(authors.get(0));
+        }
+        else {
+            System.out.print(authors.get(0));
+            for (int j = 1; j < authors.size();j++){
+                returnString.append(", ").append(authors.get(j));
+            }
+        }
+        returnString.append(": ").append(this.getCost()).append(" $");
+        return returnString.toString();
+    }
 }

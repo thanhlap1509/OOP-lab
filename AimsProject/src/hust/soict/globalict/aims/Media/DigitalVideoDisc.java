@@ -7,20 +7,23 @@ public class DigitalVideoDisc extends Disc implements Playable {
         super(title);
     }
 
-    public DigitalVideoDisc(String title, String category, float cost) {
-        super(title, category, cost);
+    public DigitalVideoDisc(int id, String title, String category, float cost) {
+        super(id,title, category, cost);
     }
 
-    public DigitalVideoDisc(String title, String category, String director, float cost) {
-        super(title, category, director, cost);
+    public DigitalVideoDisc(int id, String title, String category, String director, float cost) {
+        super(id,title, category, director, cost);
     }
 
-    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super(title, category, director, length, cost);
+    public DigitalVideoDisc(int id, String title, String category, String director, int length, float cost) {
+        super(id,title, category, director, length, cost);
     }
 
     public void toString(int i){
-        System.out.println((i + 1)+ ". DVD - "+this.getTitle() + " - "+ this.getCategory() + " - "+ this.getDirector() + " - "+this.getLength() + ": " + this.getCost() + " $");
+        System.out.println(this.getId() + ". DVD - "+this.getTitle() + " - "+ this.getCategory() + " - "+ this.getDirector() + " - "+this.getLength() + ": " + this.getCost() + " $");
+    }
+    public String toString(){
+        return "DVD - "+this.getTitle() + " - "+ this.getCategory() + " - "+ this.getDirector() + " - "+this.getLength() + ": " + this.getCost() + " $";
     }
     public void print(){
         System.out.println("- DVD - "+this.getTitle() + " - "+ getCategory() + " - "+ this.getDirector() + " - "+this.getLength() + ": " + this.getCost() + " $");

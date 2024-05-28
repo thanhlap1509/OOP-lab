@@ -5,7 +5,6 @@ import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
-    private int id;
     private String artist;
     private ArrayList<Track> tracks = new ArrayList<>();
 
@@ -13,21 +12,20 @@ public class CompactDisc extends Disc implements Playable {
         super(title);
     }
 
-    public CompactDisc(String title, String category, float cost) {
-        super(title, category, cost);
+    public CompactDisc(int id,String title, String category, float cost) {
+        super(id,title, category, cost);
     }
 
-    public CompactDisc(String title, String category, String director, float cost) {
-        super(title, category, director, cost);
+    public CompactDisc(int id,String title, String category, String director, float cost) {
+        super(id,title, category, director, cost);
     }
 
-    public CompactDisc(String title, String category, String director, int length, float cost) {
-        super(title, category, director, length, cost);
+    public CompactDisc(int id,String title, String category, String director, int length, float cost) {
+        super(id,title, category, director, length, cost);
     }
 
     public CompactDisc(int id, String title, String category, String director, int length, float cost, String artist) {
-        super(title, category, director, length, cost);
-        this.id = id;
+        super(id,title, category, director, length, cost);
         this.artist = artist;
     }
     public int addTrack(Track track){
@@ -59,9 +57,6 @@ public class CompactDisc extends Disc implements Playable {
         }
         return total;
     }
-    public int getId() {
-        return id;
-    }
 
     public String getArtist() {
         return artist;
@@ -71,9 +66,6 @@ public class CompactDisc extends Disc implements Playable {
         return tracks;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
     public void play() {
@@ -83,9 +75,16 @@ public class CompactDisc extends Disc implements Playable {
         }
     }
     public void toString(int i){
-        System.out.println((i + 1)+ ". CD - " + this.getTitle()  + " - "+ this.getCategory() + " - "  + this.artist + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
+        System.out.println(this.getId() +  ". CD - " + this.getTitle()  + " - "+ this.getCategory() + " - "  + this.artist + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
         for (Track track : tracks){
             track.play();
         }
+    }
+    public String toString(){
+        StringBuilder returnString = new StringBuilder("CD - " + this.getTitle()  + " - "+ this.getCategory() + " - "  + this.artist + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
+        for (Track track: tracks){
+            returnString.append("\n").append(track.toString());
+        }
+        return returnString.toString();
     }
 }
