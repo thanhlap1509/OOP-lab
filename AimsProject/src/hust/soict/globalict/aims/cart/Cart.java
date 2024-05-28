@@ -4,6 +4,8 @@ import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.Media.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Cart {
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     public void addMedia(Media media){
         for (Media item : itemsOrdered){
             if (media.equals(item)){
@@ -123,5 +125,9 @@ public class Cart {
     public void sortByCost(){
         Collections.sort((List<Media>)itemsOrdered, Media.COMPARATOR_BY_COST_TITLE);
         this.printMedia();
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
     }
 }
