@@ -56,7 +56,7 @@ public class Book extends Media {
     }
 
     public String toString(){
-        StringBuilder returnString = new StringBuilder("Book - " + this.getTitle() + " - " + this.getCategory() + " - ");
+        StringBuilder returnString = new StringBuilder(this.getId() + ". Book - " + this.getTitle() + " - " + this.getCategory() + " - ");
         if (authors.size() == 1){
             System.out.print(authors.get(0));
         }
@@ -66,7 +66,6 @@ public class Book extends Media {
                 returnString.append(", ").append(authors.get(j));
             }
         }
-        returnString.append(": ").append(this.getCost()).append(" $");
         return returnString.toString();
     }
 }

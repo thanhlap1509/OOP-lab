@@ -9,6 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 public class ItemController {
+    private Cart cart;
+    public ItemController(Cart cart){
+        this.cart =cart;
+    }
     private Media media;
     public void setData(Media media){
         this.media = media;
@@ -35,7 +39,7 @@ public class ItemController {
 
     @FXML
     void btnAddToCartClicked(ActionEvent event) {
-        ViewStoreController.addToCart(media);
+        cart.addMedia(media);
     }
 
     @FXML
