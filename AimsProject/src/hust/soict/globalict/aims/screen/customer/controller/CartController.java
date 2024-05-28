@@ -8,8 +8,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class CartController {
     private Store store;
@@ -68,7 +75,18 @@ public class CartController {
 
     @FXML
     void btnViewStorePressed(ActionEvent event) {
-
+        try{
+            final String CART_FXML_FILE_PATH = "/AimsProject/src/hust/soict/globalict/aims/screen/customer/view/Store.fxml";
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
+            fxmlLoader.setController(new ViewStoreController(store,ViewStoreController.getCart()));
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Store");
+            stage.show();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
     @FXML
     public void initialize(){
