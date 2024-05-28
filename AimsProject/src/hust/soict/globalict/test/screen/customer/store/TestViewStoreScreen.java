@@ -4,6 +4,7 @@ import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.Media.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Track;
+import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
 import AimsProject.src.hust.soict.globalict.aims.screen.customer.controller.ViewStoreController;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
 import javafx.application.Application;
@@ -14,11 +15,12 @@ import javafx.stage.Stage;
 
 public class TestViewStoreScreen extends Application {
     private static Store store;
+    private static Cart cart;
     @Override
     public void start(Stage primaryStage) throws Exception {
         final String STORE_FXML_FILE_PATH = "/AimsProject/src/hust/soict/globalict/aims/screen/customer/view/Store.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(STORE_FXML_FILE_PATH));
-        ViewStoreController viewStoreController = new ViewStoreController(store);
+        ViewStoreController viewStoreController = new ViewStoreController(store,cart);
         fxmlLoader.setController(viewStoreController);
         Parent root = fxmlLoader.load();
 
@@ -28,6 +30,7 @@ public class TestViewStoreScreen extends Application {
     }
     public static void main(String[] args){
         store = new Store();
+        cart = new Cart();
         initSetup(store);
         launch(args);
     }

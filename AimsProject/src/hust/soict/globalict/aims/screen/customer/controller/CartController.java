@@ -2,6 +2,7 @@ package AimsProject.src.hust.soict.globalict.aims.screen.customer.controller;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
+import AimsProject.src.hust.soict.globalict.aims.store.Store;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -12,7 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CartController {
     private Cart cart;
-    public CartController(Cart cart){
+    private Store store;
+    public CartController(Store store, Cart cart){
+        this.store = store;
         this.cart = cart;
     }
     @FXML
