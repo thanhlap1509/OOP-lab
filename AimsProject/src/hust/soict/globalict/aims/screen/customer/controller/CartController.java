@@ -7,11 +7,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CartController {
@@ -45,6 +41,15 @@ public class CartController {
 
     @FXML
     private TableView<Media> tblMedia;
+
+    @FXML
+    private RadioButton radioBtnFilterId;
+
+    @FXML
+    private RadioButton radioBtnFilterTitle;
+
+    @FXML
+    private TextField tfFilter;
 
     @FXML
     void btnPlayPressed(ActionEvent event) {
