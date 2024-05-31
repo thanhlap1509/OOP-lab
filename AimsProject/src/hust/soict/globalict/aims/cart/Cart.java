@@ -4,6 +4,7 @@ import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.Media.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
+import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -52,7 +53,7 @@ public class Cart {
         }
         return total;
     }
-    public void printMedia(){
+    public void printMedia() throws PlayerException {
         int len = itemsOrdered.size();
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items");
@@ -78,7 +79,7 @@ public class Cart {
         }
         return null;
     }
-    public void searchById(int id){
+    public void searchById(int id) throws PlayerException {
         int found = 0;
         for (int i = 0; i < itemsOrdered.size();i++){
             Media media = itemsOrdered.get(i);

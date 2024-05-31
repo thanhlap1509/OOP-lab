@@ -1,6 +1,7 @@
 package AimsProject.src.hust.soict.globalict.aims.Media;
 
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
+import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 
 import java.util.ArrayList;
 
@@ -68,13 +69,13 @@ public class CompactDisc extends Disc implements Playable {
 
 
     @Override
-    public void play() {
+    public void play() throws PlayerException {
         System.out.println("Playing CD: " + this.getTitle() + " by " + this.getArtist());
         for (Track track: tracks){
             track.play();
         }
     }
-    public void toString(int i){
+    public void toString(int i) throws PlayerException {
         System.out.println(this.getId() +  ". CD - " + this.getTitle()  + " - "+ this.getCategory() + " - "  + this.artist + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
         for (Track track : tracks){
             track.play();

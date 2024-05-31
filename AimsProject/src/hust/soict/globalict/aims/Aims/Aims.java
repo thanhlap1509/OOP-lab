@@ -3,6 +3,7 @@ package AimsProject.src.hust.soict.globalict.aims.Aims;
 import AimsProject.src.hust.soict.globalict.aims.Media.*;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
+import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
 
 import java.util.InputMismatchException;
@@ -14,7 +15,7 @@ public class Aims {
     private static Scanner scanner = new Scanner(System.in);
     private static int userOpt;
     private static String userOptStr;
-    public static void main(String[] args){
+    public static void main(String[] args) throws PlayerException {
         initSetup();
         showMenu();
     }
@@ -32,7 +33,7 @@ public class Aims {
             getUserInput(l, g);
         }
     }
-    public static void showMenu(){
+    public static void showMenu() throws PlayerException {
         System.out.println();
         System.out.println("AIMS: ");
         System.out.println("--------------------------------");
@@ -60,7 +61,7 @@ public class Aims {
         }
     }
 
-    public static void storeMenu() {
+    public static void storeMenu() throws PlayerException {
         System.out.println();
         store.displayMedia();
         System.out.println("Options: ");
@@ -112,7 +113,7 @@ public class Aims {
             }
         }
 
-    public static void mediaDetailsMenu(Media media) {
+    public static void mediaDetailsMenu(Media media) throws PlayerException {
         System.out.println();
         System.out.println("Found: " + media.getTitle() + " - " + media.getCategory() + " - " + media.getCost());
         System.out.println("Options: ");
@@ -146,7 +147,7 @@ public class Aims {
             }
         }
 
-    public static void updateStore(){
+    public static void updateStore() throws PlayerException {
         System.out.println();
         System.out.println("Options: ");
         System.out.println("--------------------------------");
@@ -250,7 +251,7 @@ public class Aims {
                     return;
             }
         }
-    public static void cartMenu(){
+    public static void cartMenu() throws PlayerException {
         System.out.println("Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. Filter media in cart");
@@ -358,7 +359,7 @@ public class Aims {
         scanner.nextLine().strip();
         return temp;
     }
-    public static void playMedia(){
+    public static void playMedia() throws PlayerException {
         System.out.print("Please enter the title of media that you want to play: ");
         userOptStr = scanner.nextLine().strip();
         Media returnMedia = store.searchByTitle(userOptStr);
@@ -375,7 +376,7 @@ public class Aims {
             System.out.println("this type of media can't be play");
         }
     }
-    public static void playMediaInCart(){
+    public static void playMediaInCart () throws PlayerException {
         System.out.print("Please enter the title of media that you want to play: ");
         userOptStr = scanner.nextLine().strip();
         Media returnMedia = cart.searchByTitle(userOptStr);
