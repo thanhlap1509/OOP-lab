@@ -119,11 +119,11 @@ public class Cart {
         itemsOrdered.clear();
         System.out.println("Cart has been clear");
     }
-    public void sortByTitle() {
+    public void sortByTitle() throws PlayerException {
         Collections.sort((List<Media>)itemsOrdered, Media.COMPARATOR_BY_TITLE_COST);
         this.printMedia();
     }
-    public void sortByCost(){
+    public void sortByCost() throws PlayerException {
         Collections.sort((List<Media>)itemsOrdered, Media.COMPARATOR_BY_COST_TITLE);
         this.printMedia();
     }
