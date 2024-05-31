@@ -64,7 +64,9 @@ public class AddBookToStoreScreen extends JPanel{
         }
         this.add(holder);
     }
-    public int getId() {return Integer.parseInt(tfId.getText());}
+    public int getId() {
+        return Integer.parseInt(tfId.getText());
+    }
     public String getTitle(){
         return tfTitle.getText();
     }

@@ -179,15 +179,38 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
             switch(((JButton) e.getSource()).getText()){
                 case "Add DVD":
                     AddDigitalVideoDiscToStoreScreen dvd = (AddDigitalVideoDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    store.addMedia(new DigitalVideoDisc(dvd.getId(),dvd.getTitle(), dvd.getCategory(), dvd.getDirector(), dvd.getLength(), dvd.getCost()));
+                    try{
+                        int id = dvd.getId();
+                        int length = dvd.getLength();
+                        float cost = dvd.getCost();
+                        if (id < 0 || length < 0 || cost < 0) return;
+                        store.addMedia(new DigitalVideoDisc(id, dvd.getTitle(), dvd.getCategory(), dvd.getDirector(), length, cost));
+                    } catch (NumberFormatException f){
+                        return;
+                    }
+
                     addNewMedia();
                     returnToViewStore();
                     break;
                 case "Create Book":
                     AddBookToStoreScreen book = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    bookToAdd = new Book(book.getId(), book.getTitle(), book.getCategory(), book.getCost());
+                    try{
+                        int id = book.getId();
+                        float cost = book.getCost();
+                        if (id < 0 || cost < 0) return;
+                        bookToAdd = new Book(id, book.getTitle(), book.getCategory(), cost);
+                    } catch (NumberFormatException f){
+                        return;
+                    }
+                    int authorNum = 0;
+                    try{
+                    authorNum = book.getAuthorsNum();
+                    if (authorNum < 0) return;
+                    } catch(NumberFormatException g){
+                        return;
+                    }
                     center.removeAll();
-                    createScrollPane(new AddBookToStoreScreen(book.getAuthorsNum()));
+                    createScrollPane(new AddBookToStoreScreen(authorNum));
                     center.add(scrollPane);
                     button.setText("Add Book");
                     center.add(button);
@@ -268,7 +291,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
             }
         }
     }
-
     private void returnToViewStore() {
         center.removeAll();
         //remove all component and add view store screen
