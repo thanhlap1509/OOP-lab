@@ -2,6 +2,7 @@ package AimsProject.src.hust.soict.globalict.aims.screen.manager;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.*;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
+import javafx.beans.binding.NumberExpression;
 
 import java.awt.*;
 import javax.swing.JPanel;
@@ -188,7 +189,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     } catch (NumberFormatException f){
                         return;
                     }
-
                     addNewMedia();
                     returnToViewStore();
                     break;
@@ -229,9 +229,24 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     break;
                 case "Create CD":
                     AddCompactDiscToStoreScreen cd = (AddCompactDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    cdToAdd = new CompactDisc(cd.getId(), cd.getTitle(), cd.getCategory(), cd.getDirector(), cd.getLength(), cd.getCost(), cd.getArtist());
+                    try{
+                        int id = cd.getId();
+                        int length = cd.getLength();
+                        float cost = cd.getCost();
+                        if (id < 0 || length < 0 || cost < 0) return;
+                        cdToAdd = new CompactDisc(cd.getId(), cd.getTitle(), cd.getCategory(), cd.getDirector(), cd.getLength(), cd.getCost(), cd.getArtist());
+                    } catch(NumberFormatException f){
+                        return;
+                    }
+                    try{
+                        int numTrack = cd.getTrackNum();
+                        if (numTrack <0) return;
+                        createScrollPane(new AddCompactDiscToStoreScreen(numTrack));
+
+                    } catch(NumberFormatException f){
+                        return;
+                    }
                     center.removeAll();
-                    createScrollPane(new AddCompactDiscToStoreScreen(cd.getTrackNum()));
                     center.add(scrollPane);
                     button.setText("Add Tracks");
                     center.add(button);
@@ -241,10 +256,25 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                 case "Add Tracks":
                     AddCompactDiscToStoreScreen tracks = (AddCompactDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
                     ArrayList<TextField> tracksList = tracks.getTrackList();
+                    ArrayList<Track> trackFromUser = new ArrayList<>();
+                    int count = 0;
                     for (int i = 0; i < tracksList.size();){
-                        Track track = new Track(tracksList.get(i).getText(), Integer.parseInt(tracksList.get(i + 1).getText()));
-                        cdToAdd.addTrack(track);
-                        i += 2;
+                        try{
+                            int length = Integer.parseInt(tracksList.get(i + 1).getText());
+                            if (length < 0) return;
+                            Track track = new Track(tracksList.get(i).getText(),length );
+                            trackFromUser.add(track);
+                            count++;
+                            i += 2;
+                        } catch (NumberFormatException f){
+                            return;
+                        }
+                        if (count == tracksList.size() / 2){
+                            for (Track t : trackFromUser){
+                                cdToAdd.addTrack(t);
+                            }
+                        }
+
                     }
                     store.addMedia(cdToAdd);
                     addNewMedia();
