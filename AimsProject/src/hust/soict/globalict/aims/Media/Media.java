@@ -42,7 +42,8 @@ public abstract class Media{
     public boolean equals(Object o){
         if (!(o instanceof Media)) return false;
         String objTitle = ((Media)o).getTitle();
-        return (objTitle.equals(this.title));
+        float objCost = ((Media) o).getCost();
+        return (objTitle.equals(this.title) && objCost == this.cost);
     }
 
     public int getId() { return id;

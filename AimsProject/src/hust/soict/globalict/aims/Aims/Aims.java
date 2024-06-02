@@ -53,7 +53,14 @@ public class Aims {
                     updateStore();
                     return;
                 case 3:
-                    cart.printMedia();
+                    try{
+                        cart.printMedia();
+                    } catch(PlayerException e){
+                        e.getMessage();
+                        e.toString();
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
+                    }
                     cartMenu();
                     return;
                 case 0:
@@ -64,7 +71,14 @@ public class Aims {
 
     public static void storeMenu() {
         System.out.println();
-        store.displayMedia();
+        try{
+            store.displayMedia();
+        }catch(PlayerException e){
+            e.getMessage();
+            e.toString();
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
+        }
         System.out.println("Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. See a media’s details");
@@ -105,7 +119,14 @@ public class Aims {
                     storeMenu();
                     return;
                 case 4:
-                    cart.printMedia();
+                    try{
+                        cart.printMedia();
+                    }catch(PlayerException e){
+                        e.getMessage();
+                        e.toString();
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
+                    }
                     cartMenu();
                     return;
                 case 0:
@@ -277,7 +298,14 @@ public class Aims {
                 if (choice.equals("id")){
                     System.out.print("Enter the id that you want to search: ");
                     int id = getInt();
-                    cart.searchById(id);
+                    try{
+                        cart.searchById(id);
+                    }catch(PlayerException e){
+                        e.getMessage();
+                        e.toString();
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
                 else {
                     System.out.print("Enter the title that you want to search: ");
@@ -315,10 +343,24 @@ public class Aims {
                     choice = scanner.nextLine().strip();
                 }
                 if (choice.equals("title")){
-                    cart.sortByTitle();
+                    try{
+                        cart.sortByTitle();
+                    }catch(PlayerException e){
+                        e.getMessage();
+                        e.toString();
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
                 else{
-                    cart.sortByCost();
+                    try{
+                        cart.sortByCost();
+                    } catch(PlayerException e){
+                        e.getMessage();
+                        e.toString();
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
+                    }
                 }
                 cartMenu();
                 return;
