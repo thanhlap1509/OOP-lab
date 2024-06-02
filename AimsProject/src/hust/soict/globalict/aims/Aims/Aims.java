@@ -3,8 +3,10 @@ package AimsProject.src.hust.soict.globalict.aims.Aims;
 import AimsProject.src.hust.soict.globalict.aims.Media.*;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 import AimsProject.src.hust.soict.globalict.aims.cart.Cart;
+import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
 
+import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -290,7 +292,14 @@ public class Aims {
                             ((Book) returnMedia).toString(0);
                         }
                         else if (returnMedia instanceof CompactDisc){
-                            ((CompactDisc) returnMedia).toString(0);
+                            try{
+                                ((CompactDisc) returnMedia).toString(0);
+                            }catch(PlayerException e){
+                                e.getMessage();
+                                e.toString();
+                                e.printStackTrace();
+                                JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
+                            }
                         }
                         else {
                             ((DigitalVideoDisc) returnMedia).toString(0);
@@ -366,10 +375,24 @@ public class Aims {
             System.out.println("There is no media with that title");
         }
         else if ( returnMedia instanceof DigitalVideoDisc){
-            ((DigitalVideoDisc) returnMedia).play();
+            try{
+                ((DigitalVideoDisc) returnMedia).play();
+            } catch(PlayerException e){
+                e.getMessage();
+                e.toString();
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "ERROR: DVD Length is non-positive", "Illegal DVD Length", JOptionPane.WARNING_MESSAGE);
+            }
         }
         else if (returnMedia instanceof CompactDisc){
-            ((CompactDisc) returnMedia).play();
+            try{
+                ((CompactDisc) returnMedia).play();
+            } catch(PlayerException e){
+                e.getMessage();
+                e.toString();
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
+            }
         }
         else {
             System.out.println("this type of media can't be play");
@@ -383,10 +406,24 @@ public class Aims {
             System.out.println("There is no media with that title");
         }
         else if ( returnMedia instanceof DigitalVideoDisc){
-            ((DigitalVideoDisc) returnMedia).play();
+            try{
+                ((DigitalVideoDisc) returnMedia).play();
+            } catch(PlayerException e){
+                e.getMessage();
+                e.toString();
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "ERROR: DVD Length is non-positive", "Illegal DVD Length", JOptionPane.WARNING_MESSAGE);
+            }
         }
         else if (returnMedia instanceof CompactDisc){
-            ((CompactDisc) returnMedia).play();
+            try{
+                ((CompactDisc) returnMedia).play();
+            } catch(PlayerException e){
+                e.getMessage();
+                e.toString();
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
+            }
         }
         else {
             System.out.println("this type of media can't be play");
