@@ -2,6 +2,7 @@ package AimsProject.src.hust.soict.globalict.aims.screen.manager;
 
 import AimsProject.src.hust.soict.globalict.aims.Media.*;
 import AimsProject.src.hust.soict.globalict.aims.store.Store;
+import javafx.beans.binding.NumberExpression;
 
 import java.awt.*;
 import javax.swing.JPanel;
@@ -129,25 +130,25 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
     }
     public static void initSetup(Store store) {
 
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star War", "Science Fiction", "George Lucas", 87, 24.95f);
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc(1,"The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc(2,"Star War", "Science Fiction", "George Lucas", 87, 24.95f);
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc(3,"Aladin", "Animation", 18.99f);
         store.addMedia(dvd1);
         store.addMedia(dvd2);
         store.addMedia(dvd3);
 
 
-        Book book = new Book("The Valley of Fear", "Detective", 20.00f);
+        Book book = new Book(10,"The Valley of Fear", "Detective", 20.00f);
         book.addAuthor("Arthur Conan Doyle");
-        Book book1 = new Book("A Living Remedy: A Memoir", "Biography", 202.00f);
+        Book book1 = new Book(11,"A Living Remedy: A Memoir", "Biography", 202.00f);
         book1.addAuthor("Nicole Chung");
-        Book book2 = new Book("On the Origin of Time: Stephen Hawking's Final Theory", "Science", 120.00f);
+        Book book2 = new Book(12,"On the Origin of Time: Stephen Hawking's Final Theory", "Science", 120.00f);
         book2.addAuthor("Thomas Hertog");
         store.addMedia(book);
         store.addMedia(book1);
         store.addMedia(book2);
 
-        CompactDisc cd1 = new CompactDisc("30", "Music","Adele", 1500.98f);
+        CompactDisc cd1 = new CompactDisc(4,"30", "Music","Adele", 1500.98f);
         Track track1CD1 = new Track("All Night Parking (interlude)", 161);
         Track track2CD1 = new Track("To Be Loved", 403);
         Track track3CD1 = new Track("Woman Like Me", 300);
@@ -155,7 +156,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         cd1.addTrack(track2CD1);
         cd1.addTrack(track3CD1);
 
-        CompactDisc cd2 = new CompactDisc("The Gods We Can Touch", "Music","Aurora", 2000.22f);
+        CompactDisc cd2 = new CompactDisc(5,"The Gods We Can Touch", "Music","Aurora", 2000.22f);
         Track track1CD2 = new Track("Everything Matters", 180+34);
         Track track2CD2 = new Track("Blood in the Wine", 180+30);
         Track track3CD2 = new Track("Artemis", 60*2+39);
@@ -163,7 +164,7 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
         cd2.addTrack(track2CD2);
         cd2.addTrack(track3CD2);
 
-        CompactDisc cd3 = new CompactDisc("Purpose", "Music","Justin Bieber", 1000.98f);
+        CompactDisc cd3 = new CompactDisc(6,"Purpose", "Music","Justin Bieber", 1000.98f);
         Track track1CD3 = new Track("The Feeling", 4*60+5);
         Track track2CD3 = new Track("No Sense", 4*60+35);
         cd3.addTrack(track1CD3);
@@ -179,15 +180,37 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
             switch(((JButton) e.getSource()).getText()){
                 case "Add DVD":
                     AddDigitalVideoDiscToStoreScreen dvd = (AddDigitalVideoDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    store.addMedia(new DigitalVideoDisc(dvd.getTitle(), dvd.getCategory(), dvd.getDirector(), dvd.getLength(), dvd.getCost()));
+                    try{
+                        int id = dvd.getId();
+                        int length = dvd.getLength();
+                        float cost = dvd.getCost();
+                        if (id < 0 || length < 0 || cost < 0) return;
+                        store.addMedia(new DigitalVideoDisc(id, dvd.getTitle(), dvd.getCategory(), dvd.getDirector(), length, cost));
+                    } catch (NumberFormatException f){
+                        return;
+                    }
                     addNewMedia();
                     returnToViewStore();
                     break;
                 case "Create Book":
                     AddBookToStoreScreen book = (AddBookToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    bookToAdd = new Book(book.getId(), book.getTitle(), book.getCategory(), book.getCost());
+                    try{
+                        int id = book.getId();
+                        float cost = book.getCost();
+                        if (id < 0 || cost < 0) return;
+                        bookToAdd = new Book(id, book.getTitle(), book.getCategory(), cost);
+                    } catch (NumberFormatException f){
+                        return;
+                    }
+                    int authorNum = 0;
+                    try{
+                    authorNum = book.getAuthorsNum();
+                    if (authorNum < 0) return;
+                    } catch(NumberFormatException g){
+                        return;
+                    }
                     center.removeAll();
-                    createScrollPane(new AddBookToStoreScreen(book.getAuthorsNum()));
+                    createScrollPane(new AddBookToStoreScreen(authorNum));
                     center.add(scrollPane);
                     button.setText("Add Book");
                     center.add(button);
@@ -206,9 +229,24 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                     break;
                 case "Create CD":
                     AddCompactDiscToStoreScreen cd = (AddCompactDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
-                    cdToAdd = new CompactDisc(cd.getId(), cd.getTitle(), cd.getCategory(), cd.getDirector(), cd.getLength(), cd.getCost(), cd.getArtist());
+                    try{
+                        int id = cd.getId();
+                        int length = cd.getLength();
+                        float cost = cd.getCost();
+                        if (id < 0 || length < 0 || cost < 0) return;
+                        cdToAdd = new CompactDisc(cd.getId(), cd.getTitle(), cd.getCategory(), cd.getDirector(), cd.getLength(), cd.getCost(), cd.getArtist());
+                    } catch(NumberFormatException f){
+                        return;
+                    }
+                    try{
+                        int numTrack = cd.getTrackNum();
+                        if (numTrack <0) return;
+                        createScrollPane(new AddCompactDiscToStoreScreen(numTrack));
+
+                    } catch(NumberFormatException f){
+                        return;
+                    }
                     center.removeAll();
-                    createScrollPane(new AddCompactDiscToStoreScreen(cd.getTrackNum()));
                     center.add(scrollPane);
                     button.setText("Add Tracks");
                     center.add(button);
@@ -218,10 +256,25 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
                 case "Add Tracks":
                     AddCompactDiscToStoreScreen tracks = (AddCompactDiscToStoreScreen) (scrollPane.getViewport().getComponents()[0]);
                     ArrayList<TextField> tracksList = tracks.getTrackList();
+                    ArrayList<Track> trackFromUser = new ArrayList<>();
+                    int count = 0;
                     for (int i = 0; i < tracksList.size();){
-                        Track track = new Track(tracksList.get(i).getText(), Integer.parseInt(tracksList.get(i + 1).getText()));
-                        cdToAdd.addTrack(track);
-                        i += 2;
+                        try{
+                            int length = Integer.parseInt(tracksList.get(i + 1).getText());
+                            if (length < 0) return;
+                            Track track = new Track(tracksList.get(i).getText(),length );
+                            trackFromUser.add(track);
+                            count++;
+                            i += 2;
+                        } catch (NumberFormatException f){
+                            return;
+                        }
+                        if (count == tracksList.size() / 2){
+                            for (Track t : trackFromUser){
+                                cdToAdd.addTrack(t);
+                            }
+                        }
+
                     }
                     store.addMedia(cdToAdd);
                     addNewMedia();
@@ -268,7 +321,6 @@ public class StoreManagerScreen extends JFrame implements ActionListener {
             }
         }
     }
-
     private void returnToViewStore() {
         center.removeAll();
         //remove all component and add view store screen

@@ -5,6 +5,7 @@ import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.Media.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
+import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 
 public class Store {
     private ArrayList<Media> itemsInStore;
@@ -49,7 +50,7 @@ public class Store {
         }
         return null;
     }
-    public void displayMedia(){
+    public void displayMedia() throws PlayerException {
         for (int i = 0; i < itemsInStore.size(); i++){
             Media media = itemsInStore.get(i);
             if (media instanceof Book){

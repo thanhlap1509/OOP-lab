@@ -1,11 +1,12 @@
 package AimsProject.src.hust.soict.globalict.aims.Media;
 
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
+import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
-    private int id;
     private String artist;
     private ArrayList<Track> tracks = new ArrayList<>();
 
@@ -13,21 +14,20 @@ public class CompactDisc extends Disc implements Playable {
         super(title);
     }
 
-    public CompactDisc(String title, String category, float cost) {
-        super(title, category, cost);
+    public CompactDisc(int id,String title, String category, float cost) {
+        super(id,title, category, cost);
     }
 
-    public CompactDisc(String title, String category, String director, float cost) {
-        super(title, category, director, cost);
+    public CompactDisc(int id,String title, String category, String director, float cost) {
+        super(id,title, category, director, cost);
     }
 
-    public CompactDisc(String title, String category, String director, int length, float cost) {
-        super(title, category, director, length, cost);
+    public CompactDisc(int id,String title, String category, String director, int length, float cost) {
+        super(id,title, category, director, length, cost);
     }
 
     public CompactDisc(int id, String title, String category, String director, int length, float cost, String artist) {
-        super(title, category, director, length, cost);
-        this.id = id;
+        super(id,title, category, director, length, cost);
         this.artist = artist;
     }
     public int addTrack(Track track){
@@ -59,9 +59,6 @@ public class CompactDisc extends Disc implements Playable {
         }
         return total;
     }
-    public int getId() {
-        return id;
-    }
 
     public String getArtist() {
         return artist;
@@ -71,21 +68,33 @@ public class CompactDisc extends Disc implements Playable {
         return tracks;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Override
-    public void play() {
-        System.out.println("Playing CD: " + this.getTitle() + " by " + this.getArtist());
-        for (Track track: tracks){
-            track.play();
+    public void play() throws PlayerException{
+        int length = this.getLength();
+        if (length > 0){
+            System.out.println("Playing CD: " + this.getTitle() + " by " + this.getArtist());
+            for (Track track: tracks){
+                track.play();
+            }
         }
+        else {
+            JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
+            throw new PlayerException("ERROR: CD length is non-positive!");
+        }
+
     }
-    public void toString(int i){
-        System.out.println((i + 1)+ ". CD - " + this.getTitle()  + " - "+ this.getCategory() + " - "  + this.artist + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
+    public void toString(int i) throws PlayerException {
+        System.out.println(this.getId() +  ". CD - " + this.getTitle()  + " - "+ this.getCategory() + " - "  + this.artist + " - " + this.getDirector() + " - "  + this.getLength() + ": " + this.getCost() + " $");
         for (Track track : tracks){
             track.play();
         }
+    }
+    public String toString(){
+        StringBuilder returnString = new StringBuilder(this.getId() + ". CD - " + this.getTitle()  + " - "+ this.getCategory() + " - "  + this.artist + " - " + this.getDirector() + " - "  + this.getLength());
+        for (Track track: tracks){
+            returnString.append("\n").append(track.toString());
+        }
+        return returnString.toString();
     }
 }

@@ -28,6 +28,7 @@ public class SwingAccumulator extends JFrame {
         setTitle("Swing Accumulator");
         setSize(350, 120);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public static void main(String[] args){
         new SwingAccumulator();
@@ -36,8 +37,10 @@ public class SwingAccumulator extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int numberIn = Integer.parseInt(tfInput.getText());
-            sum += numberIn;
+            try{
+                int numberIn = Integer.parseInt(tfInput.getText());
+                sum += numberIn;
+            } catch(NumberFormatException f){ return;}
             tfInput.setText("");
             tfOutput.setText(sum + "");
         }

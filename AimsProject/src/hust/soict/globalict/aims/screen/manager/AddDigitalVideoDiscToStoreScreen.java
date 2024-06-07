@@ -4,11 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AddDigitalVideoDiscToStoreScreen extends JPanel {
+    private JLabel jlId;
     private JLabel jlTitle;
     private JLabel jlCategory;
     private JLabel jlCost;
     private JLabel jlDirector;
     private JLabel jlLength;
+    private TextField tfId;
     private TextField tfTitle;
     private TextField tfCategory;
     private TextField tfCost;
@@ -18,6 +20,11 @@ public class AddDigitalVideoDiscToStoreScreen extends JPanel {
         this.setLayout(new FlowLayout());
         JPanel holder = new JPanel();
         holder.setLayout(new GridLayout(0, 2, 3, 3));
+        jlId = new JLabel("Enter an id: ");
+        jlId.setHorizontalAlignment(JLabel.LEFT);
+        tfId = new TextField(5);
+        holder.add(jlId);
+        holder.add(tfId);
         jlTitle = new JLabel("Enter an title: ");
         jlTitle.setPreferredSize(new Dimension(1010 / 2 - 10 , 30));
         jlTitle.setHorizontalAlignment(JLabel.LEFT);
@@ -56,4 +63,5 @@ public class AddDigitalVideoDiscToStoreScreen extends JPanel {
         return Integer.parseInt(tfLength.getText());
     }
     public float getCost(){return Float.parseFloat(tfCost.getText());}
+    public int getId() {return Integer.parseInt(tfId.getText());}
 }

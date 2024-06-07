@@ -27,6 +27,7 @@ public class AWTAccumulator extends Frame {
         setTitle("AWT Accumulator");
         setSize(350, 120);
         setVisible(true);
+
     }
     public static void main(String[] args){
         new AWTAccumulator();
@@ -34,8 +35,12 @@ public class AWTAccumulator extends Frame {
     private class TFInputListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            int numberIn = Integer.parseInt(tfInput.getText());
-            sum += numberIn;
+            try{
+                int numberIn = Integer.parseInt(tfInput.getText());
+                sum += numberIn;
+            }catch(NumberFormatException f){
+                return;
+            }
             tfInput.setText("");
             tfOutput.setText(sum + "");
         }

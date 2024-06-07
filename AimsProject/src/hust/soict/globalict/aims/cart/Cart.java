@@ -4,6 +4,9 @@ import AimsProject.src.hust.soict.globalict.aims.Media.Book;
 import AimsProject.src.hust.soict.globalict.aims.Media.CompactDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.DigitalVideoDisc;
 import AimsProject.src.hust.soict.globalict.aims.Media.Media;
+import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Cart {
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     public void addMedia(Media media){
         for (Media item : itemsOrdered){
             if (media.equals(item)){
@@ -50,7 +53,7 @@ public class Cart {
         }
         return total;
     }
-    public void printMedia(){
+    public void printMedia() throws PlayerException {
         int len = itemsOrdered.size();
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items");
@@ -76,7 +79,7 @@ public class Cart {
         }
         return null;
     }
-    public void searchById(int id){
+    public void searchById(int id) throws PlayerException {
         int found = 0;
         for (int i = 0; i < itemsOrdered.size();i++){
             Media media = itemsOrdered.get(i);
@@ -116,12 +119,16 @@ public class Cart {
         itemsOrdered.clear();
         System.out.println("Cart has been clear");
     }
-    public void sortByTitle() {
+    public void sortByTitle() throws PlayerException {
         Collections.sort((List<Media>)itemsOrdered, Media.COMPARATOR_BY_TITLE_COST);
         this.printMedia();
     }
-    public void sortByCost(){
+    public void sortByCost() throws PlayerException {
         Collections.sort((List<Media>)itemsOrdered, Media.COMPARATOR_BY_COST_TITLE);
         this.printMedia();
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
     }
 }
