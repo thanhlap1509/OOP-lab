@@ -3,6 +3,7 @@ package AimsProject.src.hust.soict.globalict.aims.Media;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
@@ -78,6 +79,7 @@ public class CompactDisc extends Disc implements Playable {
             }
         }
         else {
+            JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
             throw new PlayerException("ERROR: CD length is non-positive!");
         }
 

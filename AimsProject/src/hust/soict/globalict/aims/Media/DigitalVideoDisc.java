@@ -3,6 +3,8 @@ package AimsProject.src.hust.soict.globalict.aims.Media;
 import AimsProject.src.hust.soict.globalict.aims.Playable.Playable;
 import AimsProject.src.hust.soict.globalict.aims.exception.PlayerException;
 
+import javax.swing.*;
+
 public class DigitalVideoDisc extends Disc implements Playable {
     public DigitalVideoDisc(String title) {
         super(title);
@@ -37,6 +39,7 @@ public class DigitalVideoDisc extends Disc implements Playable {
             System.out.println("DVD length: " + this.getLength());
         }
          else {
+             JOptionPane.showMessageDialog(null, "ERROR: DVD Length is non-positive", "Illegal DVD Length", JOptionPane.WARNING_MESSAGE);
              throw new PlayerException("ERROR: DVD length is non-positive!");
         }
     }

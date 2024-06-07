@@ -8,6 +8,7 @@ public class MediaComparatorByTitleCost implements Comparator<Media> {
     //o1 sau, o2 truoc
     @Override
     public int compare(Media o1, Media o2) {
+        if (o1 == null || o2 == null) return -1;
         String o1Title = o1.getTitle();
         String o2Title = o2.getTitle();
         int titleCompare = o1Title.compareTo(o2Title);

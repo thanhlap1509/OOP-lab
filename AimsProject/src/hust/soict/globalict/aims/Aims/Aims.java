@@ -59,7 +59,6 @@ public class Aims {
                         e.getMessage();
                         e.toString();
                         e.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
                     }
                     cartMenu();
                     return;
@@ -77,7 +76,6 @@ public class Aims {
             e.getMessage();
             e.toString();
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
         }
         System.out.println("Options: ");
         System.out.println("--------------------------------");
@@ -125,7 +123,6 @@ public class Aims {
                         e.getMessage();
                         e.toString();
                         e.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
                     }
                     cartMenu();
                     return;
@@ -304,7 +301,6 @@ public class Aims {
                         e.getMessage();
                         e.toString();
                         e.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else {
@@ -326,7 +322,6 @@ public class Aims {
                                 e.getMessage();
                                 e.toString();
                                 e.printStackTrace();
-                                JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
                             }
                         }
                         else {
@@ -349,7 +344,6 @@ public class Aims {
                         e.getMessage();
                         e.toString();
                         e.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else{
@@ -359,7 +353,6 @@ public class Aims {
                         e.getMessage();
                         e.toString();
                         e.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "ERROR: Media Length is non-positive", "Illegal Media Length", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 cartMenu();
@@ -423,7 +416,6 @@ public class Aims {
                 e.getMessage();
                 e.toString();
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "ERROR: DVD Length is non-positive", "Illegal DVD Length", JOptionPane.WARNING_MESSAGE);
             }
         }
         else if (returnMedia instanceof CompactDisc){
@@ -433,7 +425,6 @@ public class Aims {
                 e.getMessage();
                 e.toString();
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
             }
         }
         else {
@@ -454,7 +445,6 @@ public class Aims {
                 e.getMessage();
                 e.toString();
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "ERROR: DVD Length is non-positive", "Illegal DVD Length", JOptionPane.WARNING_MESSAGE);
             }
         }
         else if (returnMedia instanceof CompactDisc){
@@ -464,7 +454,6 @@ public class Aims {
                 e.getMessage();
                 e.toString();
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "ERROR: CD Length is non-positive", "Illegal CD Length", JOptionPane.WARNING_MESSAGE);
             }
         }
         else {
